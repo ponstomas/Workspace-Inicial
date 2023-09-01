@@ -31,6 +31,16 @@
             <a class="nav-link" href="sell.html">Vender</a>
           </li>
           <li class="nav-item">
+            
+              <div class="dropdown">
+                  <button class="navbar-toggler btn btn-primary dropdown-toggle" type="button" data-bs-toggle="dropdown" >
+                      Menú
+                  </button>
+                  <div class="dropdown-menu" >
+                      <a class="dropdown-item" href="#">Opción 1</a>
+                  </div>
+              </div>
+          
           </li>
           <li class="nav-item">
 
@@ -46,19 +56,71 @@
     </div>
   </nav>
   <main class="pb-5 container">
+
+    
     <div class="container">
       <!-- <div class="alert alert-danger text-center" role="alert">
         <h4 class="alert-heading">Funcionalidad en desarrollo</h4> -->
 
-
-
       <!-- *** INICIO AGREGADO *** -->
 
-      <div class="container" id="divProductos"><!--Se agrega la ID-->
+      <div class="container" >
         <!--Título y subtítulo-->
         <div class="text-center p-4">
-          <h2>Productos</h2>
+          <h2>Productos</h2>        
           <p class="lead" id="subtitProductos"><!--Verás aquí todos los productos de la categoría--> </p>
+          <!--Inicio del bloque de filtrar y ordenar-->
+          <div class="container">
+            <div class="col">
+              <div class="input-group">
+                <input type="search" name="buscador" id="buscador" placeholder="Buscar..." class="form-control">
+                <button type="button" class="btn btn-primary">
+                  <!--Lupa--><i class="fas fa-search"></i>
+                </button>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col text-end">
+                <div class="btn-group btn-group-toggle mb-4" data-bs-toggle="buttons">
+                  <input type="radio" class="btn-check" name="options" id="sortAsc2">
+                  <label class="btn btn-light" for="sortAsc2" data-toggle="tooltip" title="Ordenar por precio ascendente."><i class="fas fa-sort-amount-up mr-1">$</i></label>
+                  <input type="radio" class="btn-check" name="options" id="sortDesc2">
+                  <label class="btn btn-light" for="sortDesc2" data-toggle="tooltip" title="Ordenar por precio descendente."><i class="fas fa-sort-amount-down mr-1">$</i></label>
+                  <input type="radio" class="btn-check" name="options" id="sortByCount2">
+                  <label class="btn btn-light" for="sortByCount2" data-toggle="tooltip" title="Ordenar de más a menos vendido."><i class="fas fa-sort-amount-down mr-1">Relevancia</i></label>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-lg-6 offset-lg-6 col-md-12 mb-1 container">
+                <div class="row container p-0 m-0">
+                  <div class="col">
+                    <p class="font-weight-normal text-end my-2">Precio</p>
+                  </div>
+                  <div class="col">
+                    <input class="form-control" type="number" placeholder="min." id="rangeFilterCountMin2" min=0>
+                  </div>
+                  <div class="col">
+                    <input class="form-control" type="number" placeholder="máx." id="rangeFilterCountMax2" min=0>
+                  </div>
+                  <div class="col-3 p-0">
+                    <div class="btn-group" role="group">
+                      <button class="btn btn-light btn-block" id="rangeFilterCount2">Filtrar</button>
+                      <button class="btn btn-link btn-sm" id="clearRangeFilter2">Limpiar</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="list-group" id="cat-list-container2">
+              </div>
+            </div>
+          </div> <!--Fin del bloque de filtrar y ordenar-->
+          <!-- Añadí 2 al final de las id para diferenciarlas de las de categories, funcionaba sin hacer eso pero por prevención. -->         
+          <div id="divProductos"> <!-- Añadi un div aca para poner los productos separado de las otras cosas.-->
+
+          </div> 
         </div>
       </div>
 
