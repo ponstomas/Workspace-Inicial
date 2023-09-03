@@ -1,13 +1,10 @@
 //  *** INICIO AGREGADO ***
-
-
 //URL de la API;
-let DATA_URL = "https://japceibal.github.io/emercado-api/cats_products/";
-DATA_URL += localStorage.catID + '.json'; //Le agrega la ID de la categoría para tomar los productos de ese json. La ID la toma de categories.js línea 40;
+PRODUCTS_URL += localStorage.getItem('catID') + '.json'; //Agrega el ID de la categoría;
 
 var categoria = [];
 const divProductos = document.getElementById('divProductos');
-const subtitProductos = document.getElementById('subtitProductos');
+const nombreCategoria = document.getElementById('nombreCategoria');
 const campoMin = document.getElementById("rangeFilterCountMin2");
 const campoMax = document.getElementById("rangeFilterCountMax2");
 const btnFiltrar = document.getElementById("rangeFilterCount2");
@@ -17,12 +14,12 @@ const btnPrecioDesc = document.getElementById("sortDesc2");
 const btnRelevancia = document.getElementById("sortByCount2");
 const campoBusqueda = document.getElementById("buscador")
 
-
 //Función que muestra los productos;
 function showData(dataArray) { 
+  nombreCategoria.innerHTML = categoria.catName;
   divProductos.innerHTML = ""
 
-  //El for recorre todos los productos
+  //Listado de productos
   dataArray.products.forEach((prod)=>{
     divProductos.innerHTML +=
       `<div class="list-group-item list-group-item-action cursor-active">
@@ -45,23 +42,37 @@ function showData(dataArray) {
 }
 
 //Petición a la URL
-async function getJson () {
-  const response = await fetch(DATA_URL);
-  const json = await response.json();
-  categoria = json;
-  categoriaOriginal = JSON.parse(JSON.stringify(categoria)) // Crea una copia completa del json en categoria
-  subtitProductos.innerHTML = categoria.catName; //Esto es un detalle, agrega el nombre de la categoría al subtítulo;
-  showData(categoria);
+async function getJson() {
+  try{
+    const response = await fetch(PRODUCTS_URL);
+    const json = await response.json();
+    categoria = json;
+    showData(categoria);
+    categoriaOriginal = JSON.parse(JSON.stringify(categoria)); // Crea una copia completa del json en categoria
+  }
+  catch (error){
+    //Mensaje de error
+    console.error('Error al solicitar los productos \n', error);
+    divProductos.innerHTML = `
+      <div class="bg-danger text-white text-center rounded p-4 m-4">
+        <h5>Lo sentimos, ha ocurrido un error.</h5>
+      </div>`
+  }
 }
 getJson();
 
+//Buscador
+//La función se ejecuta al utilizar el input
 campoBusqueda.addEventListener("input", ()=>{
   categoria = JSON.parse(JSON.stringify(categoriaOriginal));
-  let busqueda = document.getElementById('buscador').value.toLowerCase();
-  let filtrado = categoria.products.filter((prb) => prb.name.toLowerCase().includes(busqueda) || prb.description.toLowerCase().includes(busqueda))
+  const busqueda = campoBusqueda.value.toLowerCase(); //Valor del input en minúsculas
+  const filtrado = categoria.products.filter((element) => element.name.toLowerCase().includes(busqueda) || element.description.toLowerCase().includes(busqueda));
+  //Filtro: si el valor del buscador está incluido en el nombre o descripción del producto
   categoria.products = filtrado
   showData(categoria)
 })
+
+//Rango de precio
 btnFiltrar.addEventListener("click", function() {
   const min = campoMin.value;
   const max = campoMax.value;
@@ -70,6 +81,7 @@ btnFiltrar.addEventListener("click", function() {
   showData(categoria);
 })
 
+//Limpiar
 btnLimpiar.addEventListener("click", function() { 
   campoMin.value = null;
   campoMax.value = null;
@@ -78,28 +90,25 @@ btnLimpiar.addEventListener("click", function() {
   showData(categoria);
 }) 
 
+//Precio ascendente
 btnPrecioAsc.addEventListener("click", function(){
   const productosOrdenados = categoria.products.sort((a, b) => a.cost - b.cost); 
   categoria.products = productosOrdenados;
   showData(categoria);
 })
 
+//Precio descendente
 btnPrecioDesc.addEventListener("click", function() {
   const productosOrdenados = categoria.products.sort((a, b) => b.cost - a.cost); 
   categoria.products = productosOrdenados;
   showData(categoria);
 })
 
+//Relevancia
 btnRelevancia.addEventListener("click", function() {
   const productosOrdenados = categoria.products.sort((a, b) => b.soldCount - a.soldCount); 
   categoria.products = productosOrdenados;
   showData(categoria);
 })
-
-/*
-1- Recibe la ID de la categoría en la que hacemos click en categories.html (declarada en categories.js) y toma la información de ID.json, 101.json en el caso de Autos, por ejemplo.
-2- Crea un div con cada producto de la categoría y su información.
-3- Detalle: en el subtítulo muestra "Verás aquí todos los productos de la categoría x" tomando del json el nombre de la categoría.
-*/
 
 //  *** FIN AGREGADO ***
