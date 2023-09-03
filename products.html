@@ -29,16 +29,25 @@
           </li>
           <li class="nav-item">
             <a class="nav-link" href="sell.html">Vender</a>
-          </li>
-          <li class="nav-item">
-          </li>
+          </li>          
           <li class="nav-item">
 
-            <!-- *** INICIO AGREGADO *** -->
+      <!-- *** INICIO AGREGADO *** -->
+        <!--Menú de usuario-->
+          <div class="dropdown">
+            <button class="btn btn-dark dropdown-toggle" type="button" id="emailButton" data-bs-toggle="dropdown"aria-expanded="false">
+              Usuario</button>
+            <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="emailButton">
+              <li>
+                <a class="dropdown-item" href="my-profile.html" id="linkPerfil">Perfil</a>
+              </li>
+              <li>
+                <a class="dropdown-item" href="login.html" id="cerrarSesion">Cerrar sesión</a>
+              </li>
+            </ul>
+          </div>
 
-            <a class="nav-link" href="login.html">Cerrar sesión</a>
-
-            <!-- *** FIN AGREGADO *** -->
+      <!-- *** FIN AGREGADO *** -->
             
           </li>
         </ul>
@@ -47,26 +56,74 @@
   </nav>
   <main class="pb-5 container">
     <div class="container">
-      <!-- <div class="alert alert-danger text-center" role="alert">
-        <h4 class="alert-heading">Funcionalidad en desarrollo</h4> -->
-
-
-
-      <!-- *** INICIO AGREGADO *** -->
-
-      <div class="container" id="divProductos"><!--Se agrega la ID-->
-        <!--Título y subtítulo-->
-        <div class="text-center p-4">
-          <h2>Productos</h2>
-          <p class="lead" id="subtitProductos"><!--Verás aquí todos los productos de la categoría--> </p>
-        </div>
-      </div>
+      
+    <!--Título y subtítulo-->
+    <div class="text-center p-4">
+      <h2 id="nombreCategoria"></h2>
+      <p class="lead">Aquí verás todos los productos.</p>
+    </div>
+      <!--Inicio del bloque de filtrar y ordenar-->
+          <div class="container border p-4">
+            <div class="row mb-4">
+              <div class="col-lg-5">
+                <div class="input-group">
+                <!--Buscador-->
+                  <input type="search" name="buscador" id="buscador" placeholder="Buscar..." class="form-control">
+                  <button type="button" class="btn btn-primary">
+                    <i class="fas fa-search"></i>
+                  </button>
+                <!---->
+                </div>
+              </div>  
+              <div class="col text-end">
+                <div class="btn-group btn-group-toggle" data-bs-toggle="buttons">
+                <!--Precio ascendente-->
+                  <input type="radio" class="btn-check" name="options" id="sortAsc2">
+                  <label class="btn btn-secondary" for="sortAsc2" data-toggle="tooltip" title="Ordenar por precio ascendente."><i class="fas fa-sort-amount-up mr-1">$</i></label>
+                <!---->
+                <!--Precio descendente-->
+                  <input type="radio" class="btn-check" name="options" id="sortDesc2">
+                  <label class="btn btn-secondary" for="sortDesc2" data-toggle="tooltip" title="Ordenar por precio descendente."><i class="fas fa-sort-amount-down mr-1">$</i></label>
+                <!---->
+                <!--Relevancia-->
+                  <input type="radio" class="btn-check" name="options" id="sortByCount2">
+                  <label class="btn btn-secondary" for="sortByCount2" data-toggle="tooltip" title="Ordenar de más a menos vendido."><i class="fas fa-sort-amount-down mr-1">Relevancia</i></label>
+                <!---->
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-lg-6 offset-lg-6 col-md-12 mb-1 container">
+                <div class="row container p-0">
+                  <div class="col">
+                <!--Rango de precio-->
+                    <p class="font-weight-normal text-end my-2">Precio</p>
+                  </div>
+                  <div class="col">
+                    <input class="form-control" type="number" placeholder="min." id="rangeFilterCountMin2" min=0>
+                  </div>
+                  <div class="col">
+                    <input class="form-control" type="number" placeholder="máx." id="rangeFilterCountMax2" min=0>
+                  </div>
+                  <div class="col-3 p-0">
+                    <div class="btn-group" role="group">
+                      <button class="btn btn-primary btn-block" id="rangeFilterCount2">Filtrar</button>
+                      <button class="btn btn-danger btn-sm" id="clearRangeFilter2">Limpiar</button>
+                    </div>
+                <!---->
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="list-group" id="cat-list-container2"></div>
+            </div>
+          </div>      
+        <!--Div de productos-->
+        <div class="list-group" id="divProductos"></div>
 
       <!-- *** FIN AGREGADO *** -->
 
-
-
-      <!-- </div> -->
     </div>
   </main>
   <footer class="text-muted">
