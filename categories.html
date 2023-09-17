@@ -31,6 +31,24 @@
             <a class="nav-link" href="sell.html">Vender</a>
           </li>
           <li class="nav-item">
+
+      <!-- *** INICIO AGREGADO *** -->
+        <!--Menú de usuario-->
+          <div class="dropdown">
+            <button class="btn btn-dark dropdown-toggle" type="button" id="emailButton" data-bs-toggle="dropdown"aria-expanded="false">
+              Usuario</button>
+            <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="emailButton">
+              <li>
+                <a class="dropdown-item" href="my-profile.html" id="linkPerfil">Perfil</a>
+              </li>
+              <li>
+                <a class="dropdown-item" href="login.html" id="cerrarSesion">Cerrar sesión</a>
+              </li>
+            </ul>
+          </div>
+
+      <!-- *** FIN AGREGADO *** -->
+            
           </li>
         </ul>
       </div>
@@ -46,11 +64,11 @@
         <div class="col text-end">
           <div class="btn-group btn-group-toggle mb-4" data-bs-toggle="buttons">
             <input type="radio" class="btn-check" name="options" id="sortAsc">
-            <label class="btn btn-light" for="sortAsc">A-Z</label>
+            <label class="btn btn-light" for="sortAsc" data-toggle="tooltip" title="Ordenar alfabéticamente.">A-Z</label> <!--Añadido data-toggle="tooltip" + title-->
             <input type="radio" class="btn-check" name="options" id="sortDesc">
-            <label class="btn btn-light" for="sortDesc">Z-A</label>
+            <label class="btn btn-light" for="sortDesc" data-toggle="tooltip" title="Ordenar alfabéticamente inverso.">Z-A</label> <!--Añadido data-toggle="tooltip" + title-->
             <input type="radio" class="btn-check" name="options" id="sortByCount" checked>
-            <label class="btn btn-light" for="sortByCount"><i class="fas fa-sort-amount-down mr-1"></i></label>
+            <label class="btn btn-light" for="sortByCount" data-toggle="tooltip" title="Ordenar por cantidad de artículos."><i class="fas fa-sort-amount-down mr-1"></i></label> <!--Añadido data-toggle="tooltip" + title-->
           </div>
         </div>
       </div>
@@ -61,10 +79,10 @@
               <p class="font-weight-normal text-end my-2">Cant.</p>
             </div>
             <div class="col">
-              <input class="form-control" type="number" placeholder="min." id="rangeFilterCountMin">
+              <input class="form-control" type="number" placeholder="min." id="rangeFilterCountMin" min=0>  <!--Añadido min para que no muestre números neegativos-->
             </div>
             <div class="col">
-              <input class="form-control" type="number" placeholder="máx." id="rangeFilterCountMax">
+              <input class="form-control" type="number" placeholder="máx." id="rangeFilterCountMax" min=0>  <!--Añadido min para que no muestre números neegativos-->
             </div>
             <div class="col-3 p-0">
               <div class="btn-group" role="group">
@@ -86,7 +104,8 @@
       <p class="float-end">
         <a href="#">Volver arriba</a>
       </p>
-      <p>Este sitio forma parte de <a href="https://jovenesaprogramar.edu.uy/" target="_blank">Jovenes a Programar</a></p>
+      <p>Este sitio forma parte de <a href="https://jovenesaprogramar.edu.uy/" target="_blank">Jovenes a Programar</a>
+      </p>
     </div>
   </footer>
   <div id="spinner-wrapper">
