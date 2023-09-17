@@ -1,6 +1,7 @@
 //  *** INICIO AGREGADO ***
 //URL de la API;
-PRODUCTS_URL += localStorage.getItem('catID') + '.json'; //Agrega el ID de la categoría;
+const productInfoUrl = PRODUCTS_URL + localStorage.getItem("catID") + EXT_TYPE;
+
 
 var categoria = [];
 const divProductos = document.getElementById('divProductos');
@@ -14,15 +15,21 @@ const btnPrecioDesc = document.getElementById("sortDesc2");
 const btnRelevancia = document.getElementById("sortByCount2");
 const campoBusqueda = document.getElementById("buscador")
 
-//Función que muestra los productos;
-function showData(dataArray) { 
-  nombreCategoria.innerHTML = categoria.catName;
-  divProductos.innerHTML = ""
+
+//Funcion que almacena el id del producto y redirecciona a product-info.html
+function redirectProduct(prodId){
+  localStorage.setItem("productId", prodId);
+  window.location.href = "product-info.html";
+};
+
+
 
   //Listado de productos
   dataArray.products.forEach((prod)=>{
     divProductos.innerHTML +=
-      `<div class="list-group-item list-group-item-action cursor-active">
+      `<div class="list-group-item list-group-item-action cursor-active"
+        onclick="redirectProduct('${prod.id}')"
+      >
         <div class="row">
           <div class="col-3">
             <img src="${prod.image}" class="img-thumbnail">
@@ -44,7 +51,8 @@ function showData(dataArray) {
 //Petición a la URL
 async function getJson() {
   try{
-    const response = await fetch(PRODUCTS_URL);
+
+    const response = await fetch(productInfoUrl);
     const json = await response.json();
     categoria = json;
     showData(categoria);
@@ -73,13 +81,22 @@ campoBusqueda.addEventListener("input", ()=>{
 })
 
 //Rango de precio
-btnFiltrar.addEventListener("click", function() {
-  const min = campoMin.value;
-  const max = campoMax.value;
-  const filtro = categoria.products.filter((element) => element.cost > min && element.cost < max);
-  categoria.products = filtro;
+btnFiltrar.addEventListener("click", function(){
+  const min = parseInt(campoMin.value, 10); 
+  const max = parseInt(campoMax.value, 10); 
+  const productosOriginales = categoriaOriginal.products;
+  const productosFiltrados = [];
+  
+  for (const producto of productosOriginales) {
+    if (min <= max && producto.cost >= min && producto.cost <= max) {
+      productosFiltrados.push(producto);
+    }
+  } 
+  
+  categoria.products = productosFiltrados;
   showData(categoria);
-})
+});
+
 
 //Limpiar
 btnLimpiar.addEventListener("click", function() { 
@@ -111,4 +128,48 @@ btnRelevancia.addEventListener("click", function() {
   showData(categoria);
 })
 
+//  BUSQUEDA POR VOZ
+const voiceSearchButton = document.getElementById('voiceSearch');
+voiceSearchButton.addEventListener('click', startVoiceSearch);
+
+// Define la función startVoiceSearch para iniciar la búsqueda por voz
+function startVoiceSearch() {
+  console.log('Iniciando búsqueda por voz...');
+  const recognition = new webkitSpeechRecognition() || new SpeechRecognition();
+  recognition.lang = 'es-ES'; //  el idioma de reconocimiento
+
+  // Inicia el reconocimiento de voz
+  recognition.start();
+
+  // Evento que se dispara cuando se obtiene un resultado
+  recognition.onresult = function(event) {
+    const voiceResult = event.results[0][0].transcript;
+    // Establece el valor del campo de búsqueda con el resultado de voz
+    campoBusqueda.value = voiceResult;
+    // Ejecuta la búsqueda
+    executeSearch(voiceResult);
+  };
+
+  // Evento que se dispara cuando se detiene el reconocimiento de voz
+  recognition.onend = function() {
+    recognition.stop();
+  };
+}
+
+// Define la función executeSearch que realiza la búsqueda basada en el texto proporcionado
+function executeSearch(query) {
+ 
+  // Filtra y muestra los resultados de búsqueda según la consulta de voz
+  categoria = JSON.parse(JSON.stringify(categoriaOriginal));
+  const busqueda = query.toLowerCase();
+  const filtrado = categoria.products.filter(
+    (element) =>
+      element.name.toLowerCase().includes(busqueda) ||
+      element.description.toLowerCase().includes(busqueda)
+  );
+  categoria.products = filtrado;
+  showData(categoria);
+}
+
 //  *** FIN AGREGADO ***
+
