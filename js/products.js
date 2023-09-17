@@ -2,7 +2,6 @@
 //URL de la API;
 const productInfoUrl = PRODUCTS_URL + localStorage.getItem("catID") + EXT_TYPE;
 
-
 var categoria = [];
 const divProductos = document.getElementById('divProductos');
 const nombreCategoria = document.getElementById('nombreCategoria');
@@ -15,14 +14,16 @@ const btnPrecioDesc = document.getElementById("sortDesc2");
 const btnRelevancia = document.getElementById("sortByCount2");
 const campoBusqueda = document.getElementById("buscador")
 
-
 //Funcion que almacena el id del producto y redirecciona a product-info.html
 function redirectProduct(prodId){
   localStorage.setItem("productId", prodId);
   window.location.href = "product-info.html";
 };
 
-
+//Función que muestra los productos;
+function showData(dataArray) { 
+  nombreCategoria.innerHTML = categoria.catName;
+  divProductos.innerHTML = ""
 
   //Listado de productos
   dataArray.products.forEach((prod)=>{
@@ -46,12 +47,11 @@ function redirectProduct(prodId){
       </div>
       `
   })
-
+}
 
 //Petición a la URL
 async function getJson() {
   try{
-
     const response = await fetch(productInfoUrl);
     const json = await response.json();
     categoria = json;
@@ -96,6 +96,7 @@ btnFiltrar.addEventListener("click", function(){
   categoria.products = productosFiltrados;
   showData(categoria);
 });
+
 
 
 //Limpiar
@@ -172,4 +173,3 @@ function executeSearch(query) {
 }
 
 //  *** FIN AGREGADO ***
-
