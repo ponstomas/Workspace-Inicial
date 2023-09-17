@@ -46,7 +46,7 @@ function redirectProduct(prodId){
       </div>
       `
   })
-}
+
 
 //Petición a la URL
 async function getJson() {
