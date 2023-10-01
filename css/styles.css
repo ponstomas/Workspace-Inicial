@@ -1,3 +1,7 @@
+body{
+  background-color: #e2e2e2;
+}
+
 .jumbotron,
 .card-body,
 .container,
@@ -33,7 +37,7 @@ nav a {
   padding: 5em inherit;
   margin-bottom: 0;
   background-color: #53C0FB;
-  background: url('../img/cover_back.png');
+  background: url('../img/cover_back_light.png');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -68,8 +72,8 @@ nav a {
 }
 
 footer {
-  padding-top: 3rem;
-  padding-bottom: 3rem;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
 }
 
 footer p {
@@ -176,7 +180,7 @@ footer p {
 }
 
 main {
-  min-height: calc(100vh - 210px);
+  min-height: calc(100vh - 100px)
 }
 
 a.custom-card,
@@ -186,31 +190,118 @@ a.custom-card:hover {
 }
 
 .checked {
-  color: orange;
+  color: #fda638;
+}
+
+#loginContenedor{
+  width: 350px;
+}
+      
+#loginContenedor h1, #loginSubmit{
+  background-color: #f09334;
+  color: #fff;
+  border-radius: .25rem;
+  border: none;
+  width: 100%;
+}
+
+#loginContenedor h1{
+  font-size: 1.8rem;
+}
+
+#loginSubmit{
+  font-size: 1.3rem;
+}
+
+#loginError ul{
+  color: red; 
 }
 
 
-      /* *** INICIO AGREGADO *** */
+/* Inicio Agregado */
 
-      #loginContenedor{
-        width: 350px;
-        border: 1px solid #ccc;
-      }
-      
-      #loginContenedor h1, #loginSubmit{
-        background-color: #f09334;
-        color: #fff;
-        border-radius: .25rem;
-        border: none;
-        width: 100%;
-      }
-      
-      #loginContenedor h1{
-        font-size: 1.8rem;
-      }
-      
-      #loginSubmit{
-        font-size: 1.3rem;
-      }
+/* Modo oscuro */
+.btn-mode{
+  background-color: #db760d;
+  border-radius: 20px;
+}
 
-      /* *** FIN AGREGADO *** */
+.sun, .moon{
+  padding: 5px 15px;
+}
+
+.sun{
+  border-bottom-left-radius: 20px;
+  border-top-left-radius: 20px;
+}
+
+.moon{
+  border-bottom-right-radius: 20px;
+  border-top-right-radius: 20px;
+}
+
+/* Cambios */
+
+nav{
+  background-color: #ef9333;
+}
+
+.list-group-item{
+  animation: listar .5s forwards;
+}
+
+@keyframes listar{
+  0%{
+    transform: scaleY(0);
+    opacity: 0;
+  }
+  50%{
+    transform: scaleY(1);
+  }
+  100%{
+    opacity: 100%;
+  }
+}
+
+.catIcon{
+  height: 3rem;
+  background-color: transparent;
+  border: none;
+}
+
+.imgCarousel{
+  padding-right: 25vw;
+  padding-left: 25vw;
+}
+
+/* Estrellas */
+
+#puntuacion input[type = "radio"]{
+  display:none;
+}
+
+/* Voltea las estrellas*/
+#puntuacion{
+    direction: rtl;
+    unicode-bidi: bidi-override;
+}
+
+/* Selecciona la estrella que tocamos con el mouse y las siguientes, al voltearlas previamente se ven como las anteriores */
+/* Colorea las estrellas al pasar el mouse y al hacer click */
+#puntuacion label:hover, #puntuacion label:hover ~ label, #puntuacion input[type = "radio"]:checked ~ label{
+  color:#fda638;
+}
+
+#commentForm button{
+  margin-top: 50px;
+}
+
+.imgRelated{
+  width: 50%;
+}
+
+.imgRelated:hover{
+  cursor: pointer;
+}
+
+/* Fin Agregado */
