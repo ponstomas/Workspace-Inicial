@@ -62,11 +62,38 @@
     </div>
   </nav>
   <main>
-    <div>
+    <div class="text-white m-3">
       <form action="">
         <p>Tipo de envio</p>
-        <input type="radio" name="premium" id="premium">
-        <label for="premium">Premium 2 a 5 dias(15%)</label>
+
+        <input type="radio" name="envio" id="premium">
+        <label for="premium">Premium 2 a 5 días (15%)</label>
+        <br>
+
+        <input type="radio" name="envio" id="express">
+        <label for="express">Express 5 a 8 días (7%)</label>
+        <br>
+
+        <input type="radio" name="envio" id="standard">
+        <label for="standard">Standard 12 a 15 días (5%)</label>        
+
+        <p class="mt-3">Direccion de envio</p>
+        <div class="row">
+          <div class="col-3">
+            <p class="mb-0">Calle</p>
+            <input type="text" class="form-control">
+
+            <p class="mt-3 mb-0">Esquina</p>
+            <input type="text" class="form-control">
+          </div>
+
+          <div class="col-3">
+            <p class="mb-0">Numero</p>
+            <input type="text" class="form-control">
+          </div>
+        </div>
+
+        <button type="button" class="mt-4 btn btn-primary">Enviar</button>
       </form>
     </div>
 
