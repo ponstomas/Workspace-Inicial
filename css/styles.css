@@ -217,9 +217,6 @@ a.custom-card:hover {
   color: red; 
 }
 
-
-/* Inicio Agregado */
-
 /* Modo oscuro */
 .btn-mode{
   background-color: #db760d;
@@ -239,8 +236,6 @@ a.custom-card:hover {
   border-bottom-right-radius: 20px;
   border-top-right-radius: 20px;
 }
-
-/* Cambios */
 
 nav{
   background-color: #ef9333;
@@ -304,4 +299,3 @@ nav{
   cursor: pointer;
 }
 
-/* Fin Agregado */
