@@ -12,8 +12,8 @@
   <link href="css/font-awesome.min.css" rel="stylesheet">
   <link href="css/bootstrap.min.css" rel="stylesheet">
   <link href="css/styles.css" rel="stylesheet">
+  <link rel="icon" href="icon/IconoInvi.png">
     <style>
-  
     .img-fluid:hover {
       transform: scale(1.5);
       transition: transform 0.2s ease;
@@ -26,7 +26,7 @@
 </head>
 
 <body>
-  <nav class="navbar navbar-expand-lg navbar-light p-1">
+  <nav class="navbar navbar-expand-lg navbar-light p-1" id="mainNav">         
     <div class="container">
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
         aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -45,7 +45,7 @@
           </li>
           <li class="nav-item">
 
-        <!--Menú de usuario-->
+        <!--User Menu-->
           <div class="dropdown">
             <button class="btn dropdown-toggle" type="button" id="emailButton" data-bs-toggle="dropdown"aria-expanded="false">
               Usuario</button>
@@ -57,7 +57,10 @@
                 <a class="dropdown-item" href="cart.html" id="carrito">Mi carrito</a>
               </li>
               <li>
-                <a class="dropdown-item" href="login.html" id="cerrarSesion">Cerrar sesión</a>
+                <a class="dropdown-item" href="favoritos.html" id="favotitos">Mis favoritos</a>
+              </li>
+              <li>
+                <a class="dropdown-item" href="login.html" id="logoutSession">Cerrar sesión</a>
               </li>
             </ul>
           </div>            
@@ -77,57 +80,67 @@
   
   <main class="mb-5">
   
-    <!-- Información del producto -->
-    <div class="container text-dark">
-      <div id="divProductInfo"></div>
-      <div id="productImgs" class="row m-0"></div>
-    
-    <!--Carrusel-->
-      <div id="carousel" class="carousel carousel-dark slide bg-white pt-3 pb-3" data-bs-ride="carousel">
-        <div class="carousel-indicators">
-          <button type="button" data-bs-target="#carousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-          <button type="button" data-bs-target="#carousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
-          <button type="button" data-bs-target="#carousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
-          <button type="button" data-bs-target="#carousel" data-bs-slide-to="3" aria-label="Slide 4"></button>
+    <!-- Product Info -->
+    <div class="container text-white">
+      <div class="text-center mb-4 p-4 text-white">
+        <h2 id="productName"></h2>
+      </div>
+      <div class="card mb-3 mt-3 bg-dark text-light text-white">
+        <div class="row g-0">
+          <div class="col-md-4">
+            <!--Carousel-->
+            <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+              <div class="carousel-indicators">
+                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="" aria-label="Slide 1"></button>
+                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2" class=""></button>
+                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3" class="active" aria-current="true"></button>
+                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="3" aria-label="Slide 4" class=""></button>
+              </div>
+              <div class="carousel-inner m-2">
+                <div class="carousel-item" data-bs-interval="2000">
+                  <img src="img/imgIcon.png" class="d-block w-100 imgCarousel" alt="imagen del producto">
+                </div>
+                <div class="carousel-item active carousel-item-start" data-bs-interval="2000">
+                  <img src="img/imgIcon.png" class="d-block w-100 imgCarousel" alt="imagen del producto">
+                </div>
+                <div class="carousel-item carousel-item-next carousel-item-start" data-bs-interval="2000">
+                  <img src="img/imgIcon.png" class="d-block w-100 imgCarousel" alt="imagen del producto">
+                </div>
+                <div class="carousel-item" data-bs-interval="2000">
+                  <img src="img/imgIcon.png" class="d-block w-100 imgCarousel" alt="imagen del producto">
+                </div>
+              </div>
+              <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+              </button>
+              <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+              </button>
+            </div>
+            <!---->
+          </div>
+          <div class="col-md-8">
+            <div class="card-body" id="divProductInfo"></div>
+          </div>
         </div>
-        <div class="carousel-inner" id="productImgs">
-          <div class="carousel-item active" data-bs-interval="3000">
-            <img src="img/imgIcon.png" class="d-block w-100 imgCarousel">
-          </div>
-          <div class="carousel-item" data-bs-interval="3000">
-            <img src="img/imgIcon.png" class="d-block w-100 imgCarousel">
-          </div>
-          <div class="carousel-item" data-bs-interval="3000">
-            <img src="img/imgIcon.png" class="d-block w-100 imgCarousel">
-          </div>
-          <div class="carousel-item" data-bs-interval="3000">
-            <img src="img/imgIcon.png" class="d-block w-100 imgCarousel">
-          </div>
-        </div>
-        <button class="carousel-control-prev" type="button" data-bs-target="#carousel" data-bs-slide="prev">
-          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-          <span class="visually-hidden">Previous</span>
-        </button>
-        <button class="carousel-control-next" type="button" data-bs-target="#carousel" data-bs-slide="next">
-          <span class="carousel-control-next-icon" aria-hidden="true"></span>
-          <span class="visually-hidden">Next</span>
-        </button>
       </div>
 
-      <!-- Recomendacion -->
-      <div class="container text-dark mt-4">
+      <!-- Recommendation -->
+      <div class="container mt-4 text-white">
         <h5>Productos Relacionados</h5>
       </div>
-      <div class="container row m-0 text-dark bg-light" id="related-products"></div>
+      <div class="grid-container" id="related-products"></div>
 
-      <!-- Comentarios -->
-      <div class="container text-dark mt-4" id="comments">
+      <!-- Comments -->
+      <div class="container mt-4 text-white" id="comments">
         <h5>Comentarios</h5>
       </div>
       <br>
     
-      <!-- Formulario de comentario -->
-      <div class="container bg-white p-3">
+      <!-- Comments Form -->
+      <div class="container p-3 bg-dark text-light text-white">
         <h5>Comentar</h5>
         <form id="commentForm">
           <label for="opinion">Tu opinion:</label>
@@ -177,6 +190,8 @@
   <script src="js/bootstrap.bundle.min.js"></script>
   <script src="js/init.js"></script>
   <script src="js/product-info.js"></script>
+  <script src="js/favoritos.js"></script>
+  <script src="js/cart.js"></script>
 </body>
 
 </html>

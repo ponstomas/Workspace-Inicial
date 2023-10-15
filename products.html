@@ -11,10 +11,11 @@
   <link href="css/font-awesome.min.css" rel="stylesheet">
   <link href="css/bootstrap.min.css" rel="stylesheet">
   <link href="css/styles.css" rel="stylesheet">
+  <link rel="icon" href="icon/IconoInvi.png">
 </head>
 
 <body>
-   <nav class="navbar navbar-expand-lg navbar-light p-1">
+   <nav class="navbar navbar-expand-lg navbar-light p-1" id="mainNav">         
     <div class="container">
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
         aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -33,7 +34,7 @@
           </li>
           <li class="nav-item">
 
-        <!--Menú de usuario-->
+        <!--User Menu-->
           <div class="dropdown">
             <button class="btn dropdown-toggle" type="button" id="emailButton" data-bs-toggle="dropdown"aria-expanded="false">
               Usuario</button>
@@ -45,7 +46,10 @@
                 <a class="dropdown-item" href="cart.html" id="carrito">Mi carrito</a>
               </li>
               <li>
-                <a class="dropdown-item" href="login.html" id="cerrarSesion">Cerrar sesión</a>
+                <a class="dropdown-item" href="favoritos.html" id="favotitos">Mis favoritos</a>
+              </li>
+              <li>
+                <a class="dropdown-item" href="login.html" id="logoutSession">Cerrar sesión</a>
               </li>
             </ul>
           </div>          
@@ -65,18 +69,18 @@
   <main class="pb-5 container">
     <div class="container">
       
-    <!--Título y subtítulo-->
+    <!--Title and subtitle-->
     <div class="text-center text-dark mb-4 p-4">
       <h2 id="nombreCategoria"></h2>
       <p class="lead">Aquí verás todos los productos.</p>
     </div>
-      <!--Inicio del bloque de filtrar y ordenar-->
+      <!--Filter and order-->
           <div class="container p-4">
             <div class="row mb-4">
               <div class="col-lg-5">
                 <div class="input-group">
                   <div class="input-group">
-                    <!-- Buscador -->
+                    <!-- Search -->
                     <input type="search" name="buscador" id="buscador" placeholder="Buscar..." class="form-control bg-white">
                     <button type="button" class="btn btn-primary" id="searchButton">
                       <i class="fas fa-search"></i>
@@ -91,15 +95,15 @@
               </div>  
               <div class="col text-end">
                 <div class="btn-group btn-group-toggle" data-bs-toggle="buttons">
-                <!--Precio ascendente-->
+                <!--Ascending price-->
                   <input type="radio" class="btn-check" name="options" id="sortAsc2">
                   <label class="btn btn-secondary" for="sortAsc2" data-toggle="tooltip" title="Ordenar por precio ascendente."><i class="fas fa-sort-amount-up mr-1">$</i></label>
                 <!---->
-                <!--Precio descendente-->
+                <!--Descending price-->
                   <input type="radio" class="btn-check" name="options" id="sortDesc2">
                   <label class="btn btn-secondary" for="sortDesc2" data-toggle="tooltip" title="Ordenar por precio descendente."><i class="fas fa-sort-amount-down mr-1">$</i></label>
                 <!---->
-                <!--Relevancia-->
+                <!--Relevance-->
                   <input type="radio" class="btn-check" name="options" id="sortByCount2">
                   <label class="btn btn-secondary" for="sortByCount2" data-toggle="tooltip" title="Ordenar de más a menos vendido."><i class="fas fa-sort-amount-down mr-1">Relevancia</i></label>
                 <!---->
@@ -110,7 +114,7 @@
               <div class="col-lg-6 offset-lg-6 col-md-12 mb-1 container">
                 <div class="row container p-0">
                   <div class="col">
-                <!--Rango de precio-->
+                <!--Price Range-->
                     <p class="font-weight-normal text-dark text-end my-2">Precio</p>
                   </div>
                   <div class="col">
@@ -121,8 +125,8 @@
                   </div>
                   <div class="col-3 p-0">
                     <div class="btn-group" role="group">
-                      <button class="btn btn-primary btn-block" id="rangeFilterCount2">Filtrar</button>
-                      <button class="btn btn-danger btn-sm" id="clearRangeFilter2">Limpiar</button>
+                      <button class="btn btn-primary btn-block rangeFilterButton" id="rangeFilterCount2">Filtrar</button>
+                      <button class="btn btn-danger btn-sm clearRangeButton" id="clearRangeFilter2">Limpiar</button>
                     </div>
                 <!---->
                   </div>
@@ -133,10 +137,8 @@
               <div class="list-group" id="cat-list-container2"></div>
             </div>
           </div>      
-        <!--Div de productos-->
-        <div class="list-group" id="divProductos"></div>
-
-      <!-- *** FIN AGREGADO *** -->
+        <!--Products div-->
+        <div class="grid-container" id="divProductos"></div>
 
     </div>
   </main>
@@ -160,6 +162,8 @@
   <script src="js/bootstrap.bundle.min.js"></script>
   <script src="js/init.js"></script>
   <script src="js/products.js"></script>
+  <script src="js/favoritos.js"></script>
+  <script src="js/cart.js"></script>
 </body>
 
 </html>

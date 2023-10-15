@@ -10,10 +10,11 @@
   <link href="css/bootstrap.min.css" rel="stylesheet">
   <link href="css/font-awesome.min.css" rel="stylesheet">
   <link href="css/styles.css" rel="stylesheet">
+  <link rel="icon" href="icon/IconoInvi.png">
 </head>
 
 <body>
-  <nav class="navbar navbar-expand-lg navbar-light p-1">
+  <nav class="navbar navbar-expand-lg navbar-light p-1" id="mainNav">       
     <div class="container">
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
         aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -32,7 +33,7 @@
           </li>
           <li class="nav-item">
 
-        <!--Menú de usuario-->
+        <!--User menu-->
           <div class="dropdown">
             <button class="btn dropdown-toggle" type="button" id="emailButton" data-bs-toggle="dropdown"aria-expanded="false">
               Usuario</button>
@@ -44,7 +45,10 @@
                 <a class="dropdown-item" href="cart.html" id="carrito">Mi carrito</a>
               </li>
               <li>
-                <a class="dropdown-item" href="login.html" id="cerrarSesion">Cerrar sesión</a>
+                <a class="dropdown-item" href="favoritos.html" id="favotitos">Mis favoritos</a>
+              </li>
+              <li>
+                <a class="dropdown-item" href="login.html" id="logoutSession">Cerrar sesión</a>
               </li>
             </ul>
           </div>            
@@ -63,10 +67,97 @@
   </nav>
   <main>
     <div class="container">
-      <div class="alert alert-danger text-center" role="alert">
-        <h4 class="alert-heading">Funcionalidad en desarrollo</h4>
+      
+      <div class="text-center text-dark p-4">
+        <h2>Carrito de compras <i class="fa fa-shopping-cart text-primary"></i></h2>
       </div>
+      
+      <div class="container pb-5 h-100">
+        <div class="row d-flex justify-content-center align-items-center h-100">
+            <div class="col-12">
+                <div class="card card-registration card-registration-2" style="border-radius: 15px;">
+                    <div class="card-body p-0">
+                        <div class="row g-0">
+                            <div class="col-lg-8">
+                                <div class="py-5">
+                                    <div class="d-flex justify-content-between align-items-center mb-5">
+                                        <h2 class="fw-bold mb-0 text-black ps-5">Artículos a comprar</h1>
+                                        
+                                    </div>
+                                    <hr class="my-4">     
+                                    <!-- Cart item container <div class="list-group grid-container" id="cartProducts"></div>-->
+                                    <table class="table">
+                                      <thead>
+                                        <tr>
+                                          <th class="text-dark" scope="col"></th>
+                                          <th class="text-dark" scope="col">Nombre</th>
+                                          <th class="text-dark" scope="col">Costo</th>
+                                          <th class="text-dark" scope="col">Cantidad</th>
+                                          <th class="text-dark" scope="col">Subtotal</th>
+                                        </tr> 
+                                      </thead>
+                                      <tbody id="cartProducts">                                       
+                                         <!-- Product container  -->
+                                      </tbody>
+                                    </table>
+    
+                                </div>
+                            </div>
+                            <div class="col-lg-4 bg-grey">
+                                <div class="p-5">
+                                    <h3 class="fw-bold mb-5 mt-2 pt-1">Resúmen</h3>
+                                    <hr class="my-4">
+          
+                                    <h5 class="text-uppercase mb-3">Tipo de envío</h5>
+          
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" data-percentage="15" oninput="updateTotal()" checked>
+                                        <label class="form-check-label" for="flexRadioDefault1">Premium 2 a 5 días (15%)</label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" data-percentage="7" oninput="updateTotal()">
+                                        <label class="form-check-label" for="flexRadioDefault2">Express 5 a 8 días (7%)</label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault3" data-percentage="5" oninput="updateTotal()">
+                                        <label class="form-check-label" for="flexRadioDefault3">Standard 12 a 15 días (5%)</label>
+                                    </div>            
+                                    <hr class="my-4">                                
+                                    <div class="d-flex justify-content-between mb-5">
+                                        <h5>PRECIO FINAL</h5>
+                                         <h5 id="finalPrice">0</h5> <!--finalPrice container -->
+                                    </div>   
+     
+                                    <form>
+                                      <div class="mb-3">
+                                          <label for="name" class="form-label">Nombre</label>
+                                          <input type="text" class="form-control" id="name" placeholder="Nombre">
+                                      </div>
+                                      <div class="mb-3">
+                                          <label for="street" class="form-label">Calle</label>
+                                          <input type="text" class="form-control" id="street" placeholder="Calle">
+                                      </div>
+                                      <div class="mb-3">
+                                          <label for="intersection" class="form-label">Esquina</label>
+                                          <input type="text" class="form-control" id="intersection" placeholder="Esquina">
+                                      </div>
+                                      <div class="mb-3">
+                                        <label for="details" class="form-label">Mas detalles</label>
+                                        <input type="text" class="form-control" id="details" placeholder="Indicaciones para identificar el lugar">
+                                    </div>
+                                  </form>
+                                  
+                                  <button type="button" class="btn btn-primary btn-block btn-lg" data-mdb-ripple-color="dark">Comprar</button> 
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
+
+
   </main>
   <footer class="text-muted bg-white">
     <div class="container">

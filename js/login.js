@@ -1,19 +1,19 @@
-let usuario = document.getElementById("usuario");
+let user = document.getElementById("user");
 let contrasena = document.getElementById("contrasena");
 let loginError = document.getElementById("loginError");
 let errorMessage = "";
 
 document.addEventListener("input", ()=>{
-  //Mostrar que el usuario es válido
-  if (!emailValido(usuario.value)) {
-    usuario.classList.add('is-invalid');
-    usuario.classList.remove('is-valid');
+//Show that user is valid
+  if (!emailValido(user.value)) {
+    user.classList.add('is-invalid');
+    user.classList.remove('is-valid');
     }
   else{
-    usuario.classList.add('is-valid');
-    usuario.classList.remove('is-invalid');
+    user.classList.add('is-valid');
+    user.classList.remove('is-invalid');
   }
-  //Mostrar que la contraseña es válida
+//Show that password is valid
   if (!contrasenaValida(contrasena.value)) {
     contrasena.classList.add('is-invalid');
     contrasena.classList.remove('is-valid');
@@ -24,27 +24,27 @@ document.addEventListener("input", ()=>{
   }
 })
 
-//Guardar usuario
+//Save User
 function submitForm(event){
     event.preventDefault();
 
-  if (usuario.value !== "" && contrasena.value !== "") {
+  if (user.value !== "" && contrasena.value !== "") {
 
-    if (emailValido(usuario.value) && contrasenaValida(contrasena.value)) { //linea agregada
-          localStorage.setItem("usuario", usuario.value);
+    if (emailValido(user.value) && contrasenaValida(contrasena.value)) {
+          localStorage.setItem("user", user.value);
           window.location.href = "index.html";
     } 
   
-  //Mensajes de error
+  //Error Message
   else {
-      errorMessage = "Datos de inicio de sesión no válidos"; //linea agregada
+      errorMessage = "Datos de inicio de sesión no válidos";
   }
   
   } else {
       errorMessage = "<li class='small'>Usuario y contraseña requeridos</li>";
   }
 
-  if (!emailValido(usuario.value)) {
+  if (!emailValido(user.value)) {
       errorMessage += "<li class='small'>Formato de correo electrónico incorrecto</li>";
   }
     
@@ -64,7 +64,7 @@ function submitForm(event){
     loginError.innerHTML = "<ul>" + errorMessage + "</ul>";
 }
 
-//Mostrar contraseña
+//Show Password
 function mostrarPassword() {
   var show_eye = document.getElementById("show_eye");
   var hide_eye = document.getElementById("hide_eye");
@@ -82,7 +82,7 @@ function mostrarPassword() {
 }
 
   function emailValido(email) {
-    // valida correo electrónico de la forma hola@gmail.com
+    // Validate email
     var condicionDeEmail = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
     return condicionDeEmail.test(email);
 }
@@ -105,7 +105,7 @@ function contrasenaValida(password) {
   })
   //Background
   document.querySelector('body').style.backgroundColor = "#0d1117";
-  //Imagen
+  //Image
   loginImg.src = "img/login_dark.png";
   }
 
@@ -117,7 +117,7 @@ function contrasenaValida(password) {
   })
   //Background
   document.querySelector('body').style.backgroundColor = "#e2e2e2";
-  //Imagen
+  //Image
   loginImg.src = "img/login_light.png";
   }
 
