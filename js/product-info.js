@@ -49,7 +49,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 <button class="btn btn-primary favoriteBtn" id="addToFavorites_${data.catId}-${data.id}" onclick="toggleFavorito('${data.catId}', '${data.id}')">
                     <i class="fas fa-heart"></i> <!-- Icono de corazón -->
                 </button>
-                <button type="button" class="btn btn-danger border-0 cartIcon" onclick="addToCart('${data.id}')"><i class="fa fa-shopping-cart"></i></button>
+                <button type="button" class="btn text-white border-0 cartIcon" onclick="addToCart('${data.id}')"><i class="fa fa-shopping-cart"></i></button>
               </div>
         `
 
@@ -60,7 +60,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
         //Dark Mode
         modeList()
-         btnFavorite(data.id)
+        btnFavorite(data.id)
+        btnCart(data.id)
     }
 
     // Shows Stars

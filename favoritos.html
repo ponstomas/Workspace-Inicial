@@ -32,6 +32,12 @@
             <a class="nav-link" href="sell.html">Vender</a>
           </li>
           <li class="nav-item">
+            <a class="nav-link" href="favoritos.html" title="Favoritos"><i class="fa fa-heart"></i></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="cart.html" title="Carrito"><i class="fa fa-shopping-cart"></i></a>
+          </li>
+          <li class="nav-item">
             <!-- Menú de usuario -->
             <div class="dropdown">
               <button class="btn dropdown-toggle" type="button" id="emailButton" data-bs-toggle="dropdown"
@@ -41,12 +47,6 @@
               <ul class="dropdown-menu dropdown-menu" aria-labelledby="emailButton">
                 <li>
                   <a class="dropdown-item" href="my-profile.html" id="linkPerfil">Perfil</a>
-                </li>
-                <li>
-                  <a class="dropdown-item" href="cart.html" id="carrito">Mi carrito</a>
-                </li>
-                <li>
-                  <a class="dropdown-item" href="favoritos.html" id="favoritos">Mis favoritos</a>
                 </li>
                 <li>
                   <a class="dropdown-item" href="login.html" id="logoutSession">Cerrar sesión</a>
@@ -68,14 +68,12 @@
       </div>
     </div>
   </nav>
-  <main class="pb-5 container">
+  <main class="pb-5">
+    <div class="text-center text-dark bg-light p-3 mb-4">
+      <h2>Favoritos <i class="fa fa-heart text-primary"></i></h2>
+      <p class="lead">Aquí verás todos tus productos favoritos.</p>
+    </div>
     <div class="container">
-      <!-- Title ans subtitle -->
-      <div class="text-center text-dark mb-4 p-4">
-        <h2 class="lead">Aquí verás todos tus productos favoritos.</h2>
-      </div>
-     
-   
       <!-- Favorite products div -->
       <div class="grid-container" id="divFavoritos"></div>
     </div>

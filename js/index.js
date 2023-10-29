@@ -42,16 +42,24 @@ var headerImgResponsive = document.querySelector('.jumbotron-responsive');
 
 
 lightMode.addEventListener("click", ()=>{
-  headerImgrResponsive.style.backgroundImage = "url('img/login_light.png')";
+  headerImgResponsive.style.backgroundImage = "url('img/cover_back_light_responsive.png')";    
 })
 
 darkMode.addEventListener("click", ()=>{
-  headerImgResponsive.style.backgroundImage = "url(img/login_dark.png)";
+  headerImgResponsive.style.backgroundImage = "url('img/cover_back_dark_responsive.png')";       
 })
 
 if (localStorage.getItem("mode") == "dark") {
-    headerImgResponsive.style.backgroundImage = "url('img/login_dark.png')";
+    headerImgResponsive.style.backgroundImage = "url('img/cover_back_dark_responsive.png')";      
 }
 else{
-    headerImgResponsive.style.backgroundImage = "url('img/login_light.png')";
+    headerImgResponsive.style.backgroundImage = "url('img/cover_back_light_responsive.png')";     
 }
+
+// Skeleton Loading
+
+document.addEventListener("DOMContentLoaded", function() {
+  var preloader = document.getElementById('preloader');
+  preloader.style.opacity = '0';
+  preloader.style.visibility = 'hidden';
+});

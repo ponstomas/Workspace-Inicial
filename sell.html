@@ -32,44 +32,46 @@
             <a class="nav-link" href="sell.html">Vender</a>
           </li>
           <li class="nav-item">
-
-        <!--Menú de usuario-->
-          <div class="dropdown">
-            <button class="btn dropdown-toggle" type="button" id="emailButton" data-bs-toggle="dropdown"aria-expanded="false">
-              Usuario</button>
-            <ul class="dropdown-menu dropdown-menu" aria-labelledby="emailButton">
-              <li>
-                <a class="dropdown-item" href="my-profile.html" id="linkPerfil">Perfil</a>
-              </li>
-              <li>
-                <a class="dropdown-item" href="login.html" id="logoutSession">Cerrar sesión</a>
-              </li>
-              <li>
-                <a class="dropdown-item" href="favoritos.html" id="favotitos">Mis favoritos</a>
-              </li>
-              <li>
-                <a class="dropdown-item" href="cart.html" id="carrito">Mi carrito</a>
-              </li>
-            </ul>
-          </div>          
+            <a class="nav-link" href="favoritos.html" title="Favoritos"><i class="fa fa-heart"></i></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="cart.html" title="Carrito"><i class="fa fa-shopping-cart"></i></a>
+          </li>
+          <li class="nav-item">
+            <!--Menú de usuario-->
+            <div class="dropdown">
+              <button class="btn dropdown-toggle" type="button" id="emailButton" data-bs-toggle="dropdown"
+                aria-expanded="false">
+                Usuario</button>
+              <ul class="dropdown-menu dropdown-menu" aria-labelledby="emailButton">
+                <li>
+                  <a class="dropdown-item" href="my-profile.html" id="linkPerfil">Perfil</a>
+                </li>
+                <li>
+                  <a class="dropdown-item" href="login.html" id="logoutSession">Cerrar sesión</a>
+                </li>
+              </ul>
+            </div>
           </li>
           <li class="nav-item">
             <div class="btn-mode row float-end">
               <div id="lightMode" class="btn-primary col sun">
-                <i class="fas fa-sun"></i></div>
+                <i class="fas fa-sun"></i>
+              </div>
               <div id="darkMode" class="col moon">
-                <i class="fas fa-moon"></i></div>
+                <i class="fas fa-moon"></i>
+              </div>
             </div>
           </li>
         </ul>
       </div>
     </div>
   </nav>
+  <div class="text-center text-dark bg-light p-3 mb-5">
+    <h2>Vender</h2>
+    <p class="lead">Ingresa los datos del artículo a vender.</p>
+  </div>
   <div class="container mb-5 text-light">
-    <div class="text-center p-4">
-      <h2>Vender</h2>
-      <p class="lead">Ingresa los datos del artículo a vender.</p>
-    </div>
     <div class="row justify-content-md-center">
       <div class="col-md-8 order-md-1">
         <h4 class="mb-3">Información del producto</h4>
@@ -102,15 +104,16 @@
           <div class="row">
             <div class="col-md-3 mb-3">
               <label for="productCostInput">Costo</label>
-              <input type="number" name="productCostInput" class="form-control bg-white" id="productCostInput" placeholder="" required="" value="0"
-                min="0">
+              <input type="number" name="productCostInput" class="form-control bg-white" id="productCostInput"
+                placeholder="" required="" value="0" min="0">
               <div class="invalid-feedback">
                 El costo debe ser mayor que 0.
               </div>
             </div>
             <div class="col-md-4 mb-3">
               <label for="productCurrency">Moneda</label>
-              <select name="productCurrency" class="form-select custom-select d-block w-100 bg-white" id="productCurrency" required>
+              <select name="productCurrency" class="form-select custom-select d-block w-100 bg-white"
+                id="productCurrency" required>
                 <option value="" hidden selected>Seleccionar moneda</option>
                 <option>Pesos Uruguayos (UYU)</option>
                 <option>Dólares (USD)</option>
@@ -123,7 +126,8 @@
           <div class="row">
             <div class="col-md-7 mb-3">
               <label for="productCategory">Categoría</label>
-              <select name="productCategory" class="custom-select form-select d-block w-100 bg-white" id="productCategory">
+              <select name="productCategory" class="custom-select form-select d-block w-100 bg-white"
+                id="productCategory">
                 <option value="">Elija la categoría...</option>
                 <option>Autos</option>
                 <option>Juguetes</option>
@@ -140,8 +144,8 @@
           <div class="row">
             <div class="col-md-3 mb-3">
               <label for="productCountInput">Cantidad en stock</label>
-              <input type="number" name="productCountInput" class="form-control bg-white" id="productCountInput"  required value="1"
-                min="0">
+              <input type="number" name="productCountInput" class="form-control bg-white" id="productCountInput"
+                required value="1" min="0">
               <div class="invalid-feedback">
                 La cantidad es requerida.
               </div>
@@ -202,7 +206,8 @@
       <p class="float-end">
         <a href="#">Volver arriba</a>
       </p>
-      <p>Este sitio forma parte de <a href="https://jovenesaprogramar.edu.uy/" target="_blank">Jovenes a Programar</a></p>
+      <p>Este sitio forma parte de <a href="https://jovenesaprogramar.edu.uy/" target="_blank">Jovenes a Programar</a>
+      </p>
     </div>
   </footer>
 
