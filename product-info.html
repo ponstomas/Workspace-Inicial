@@ -6,27 +6,28 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <title>eMercado - Todo lo que busques está aquí</title>
 
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" >
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Raleway:300,300i,400,400i,700,700i,900,900i" rel="stylesheet">
   <link href="css/font-awesome.min.css" rel="stylesheet">
   <link href="css/font-awesome.min.css" rel="stylesheet">
   <link href="css/bootstrap.min.css" rel="stylesheet">
   <link href="css/styles.css" rel="stylesheet">
   <link rel="icon" href="icon/IconoInvi.png">
-    <style>
+  <style>
     .img-fluid:hover {
       transform: scale(1.5);
       transition: transform 0.2s ease;
     }
+
     .img-fluid {
       cursor: pointer;
     }
   </style>
-  
+
 </head>
 
 <body>
-  <nav class="navbar navbar-expand-lg navbar-light p-1" id="mainNav">         
+  <nav class="navbar navbar-expand-lg navbar-light p-1" id="mainNav">
     <div class="container">
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
         aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -44,42 +45,44 @@
             <a class="nav-link" href="sell.html">Vender</a>
           </li>
           <li class="nav-item">
-
-        <!--User Menu-->
-          <div class="dropdown">
-            <button class="btn dropdown-toggle" type="button" id="emailButton" data-bs-toggle="dropdown"aria-expanded="false">
-              Usuario</button>
-            <ul class="dropdown-menu dropdown-menu" aria-labelledby="emailButton">
-              <li>
-                <a class="dropdown-item" href="my-profile.html" id="linkPerfil">Perfil</a>
-              </li>
-              <li>
-                <a class="dropdown-item" href="cart.html" id="carrito">Mi carrito</a>
-              </li>
-              <li>
-                <a class="dropdown-item" href="favoritos.html" id="favotitos">Mis favoritos</a>
-              </li>
-              <li>
-                <a class="dropdown-item" href="login.html" id="logoutSession">Cerrar sesión</a>
-              </li>
-            </ul>
-          </div>            
+            <a class="nav-link" href="favoritos.html" title="Favoritos"><i class="fa fa-heart"></i></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="cart.html" title="Carrito"><i class="fa fa-shopping-cart"></i></a>
+          </li>
+          <li class="nav-item">
+            <!--User Menu-->
+            <div class="dropdown">
+              <button class="btn dropdown-toggle" type="button" id="emailButton" data-bs-toggle="dropdown"
+                aria-expanded="false">
+                Usuario</button>
+              <ul class="dropdown-menu dropdown-menu" aria-labelledby="emailButton">
+                <li>
+                  <a class="dropdown-item" href="my-profile.html" id="linkPerfil">Perfil</a>
+                </li>
+                <li>
+                  <a class="dropdown-item" href="login.html" id="logoutSession">Cerrar sesión</a>
+                </li>
+              </ul>
+            </div>
           </li>
           <li class="nav-item">
             <div class="btn-mode row float-end">
               <div id="lightMode" class="btn-primary col sun">
-                <i class="fas fa-sun"></i></div>
+                <i class="fas fa-sun"></i>
+              </div>
               <div id="darkMode" class="col moon">
-                <i class="fas fa-moon"></i></div>
+                <i class="fas fa-moon"></i>
+              </div>
             </div>
           </li>
         </ul>
       </div>
     </div>
   </nav>
-  
+
   <main class="mb-5">
-  
+
     <!-- Product Info -->
     <div class="container text-white">
       <div class="text-center mb-4 p-4 text-white">
@@ -91,10 +94,14 @@
             <!--Carousel-->
             <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
               <div class="carousel-indicators">
-                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="" aria-label="Slide 1"></button>
-                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2" class=""></button>
-                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3" class="active" aria-current="true"></button>
-                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="3" aria-label="Slide 4" class=""></button>
+                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class=""
+                  aria-label="Slide 1"></button>
+                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1"
+                  aria-label="Slide 2" class=""></button>
+                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2"
+                  aria-label="Slide 3" class="active" aria-current="true"></button>
+                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="3"
+                  aria-label="Slide 4" class=""></button>
               </div>
               <div class="carousel-inner m-2">
                 <div class="carousel-item" data-bs-interval="2000">
@@ -110,11 +117,13 @@
                   <img src="img/imgIcon.png" class="d-block w-100 imgCarousel" alt="imagen del producto">
                 </div>
               </div>
-              <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+              <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"
+                data-bs-slide="prev">
                 <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                 <span class="visually-hidden">Previous</span>
               </button>
-              <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+              <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators"
+                data-bs-slide="next">
                 <span class="carousel-control-next-icon" aria-hidden="true"></span>
                 <span class="visually-hidden">Next</span>
               </button>
@@ -128,46 +137,51 @@
       </div>
 
       <!-- Recommendation -->
-      <div class="container mt-4 text-white">
+      <div class="container mt-4 text-dark">
         <h5>Productos Relacionados</h5>
       </div>
       <div class="grid-container" id="related-products"></div>
 
       <!-- Comments -->
-      <div class="container mt-4 text-white" id="comments">
-        <h5>Comentarios</h5>
-      </div>
-      <br>
-    
-      <!-- Comments Form -->
-      <div class="container p-3 bg-dark text-light text-white">
-        <h5>Comentar</h5>
-        <form id="commentForm">
-          <label for="opinion">Tu opinion:</label>
-          <textarea class="form-control" id="opinion" name="opinion"></textarea>
-          <br>
-        
-          <div class="col">
-            <label>Tu puntuación:</label>
+      <div class="accordion" id="accordionExample">
+        <div class="accordion-item bg-light text-dark">
+          <h2 class="accordion-header" id="headingOne">
+            <button class="accordion-button bg-light text-dark" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+              <h5>Comentarios</h5>
+            </button>
+          </h2>
+          <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+            <div class="accordion-body">
+              <div id="comments"></div>
+              <!-- Comments Form -->
+              <div class="m-3">
+                <h5 class="mt-4">Comentar</h5>
+                <form id="commentForm">
+                  <label for="opinion">Tu opinion:</label>
+                  <textarea class="form-control" id="opinion" name="opinion"></textarea>
+                  <br>
+                  <div class="col">
+                    <label>Tu puntuación:</label>
+                  </div>
+                  <div id="puntuacion" class="position-absolute left-0">
+                    <input id="radio1" type="radio" name="estrellas" value="5">
+                    <label for="radio1"><span class="fa fa-star estrella"></span></label>
+                    <input id="radio2" type="radio" name="estrellas" value="4">
+                    <label for="radio2"><span class="fa fa-star estrella"></span></label>
+                    <input id="radio3" type="radio" name="estrellas" value="3">
+                    <label for="radio3"><span class="fa fa-star estrella"></span></label>
+                    <input id="radio4" type="radio" name="estrellas" value="2">
+                    <label for="radio4"><span class="fa fa-star estrella"></span></label>
+                    <input id="radio5" type="radio" name="estrellas" value="1">
+                    <label for="radio5"><span class="fa fa-star estrella"></span></label>
+                  </div>
+                  <button type="submit" class="btn btn-primary mb-3" id="btn">Enviar</button>
+                </form>
+              </div>
+            </div>
           </div>
-
-          <div id="puntuacion" class="position-absolute left-0 col">
-            <input id="radio1" type="radio" name="estrellas" value="5">
-            <label for="radio1"><span class="fa fa-star estrella"></span></label>
-            <input id="radio2" type="radio" name="estrellas" value="4">
-            <label for="radio2"><span class="fa fa-star estrella"></span></label>
-            <input id="radio3" type="radio" name="estrellas" value="3">
-            <label for="radio3"><span class="fa fa-star estrella"></span></label>
-            <input id="radio4" type="radio" name="estrellas" value="2">
-            <label for="radio4"><span class="fa fa-star estrella"></span></label>
-            <input id="radio5" type="radio" name="estrellas" value="1">
-            <label for="radio5"><span class="fa fa-star estrella"></span></label>
-          </div>
-
-          <button type="submit" class="btn btn-primary" id="btn">Enviar</button>
-        </form>
+        </div>
       </div>
-  </div>
 
   </main>
   <footer class="text-muted bg-white">

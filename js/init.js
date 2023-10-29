@@ -84,74 +84,59 @@ function changeMode() {
   var navElement = document.getElementById("mainNav");            
   var navLinks = navElement.querySelectorAll("a");                
   var dropdownMenu = document.querySelectorAll(".dropdown-menu"); 
-  var rangeFilterButtons = document.querySelectorAll(".rangeFilterButton");
-  var clearRangeButtons = document.querySelectorAll(".clearRangeButton");
-  let searchButton = document.getElementById("searchButton");
-  let voiceSearchButton = document.getElementById("voiceSearch");
-  let heartIcons = document.querySelectorAll(".favoriteBtn");
-
-  
-
+  let btnPrimary = document.querySelectorAll('.btn-primary');
+  let btnDanger = document.querySelectorAll('.btn-danger');
 
   //Dark
   if (localStorage.getItem("mode") == "dark") {
     lightElementsBg.forEach((element) => {
       element.classList.remove('bg-light', 'bg-white', 'btn-light');
       element.classList.add('bg-dark', 'text-light');
-      navElement.style.backgroundColor = "#BF7350";   //**********************************************
-      navElement.style.color = "#ffffff"; //**********************************************
-      dropdownMenu.forEach(menu => {  //**********************************************
-        menu.style.backgroundColor = "#9e764c";
-      });
-      document.getElementById('emailButton').style.color = "#ffffff";   //**********************************************
     });
     lightElementsText.forEach((element) => {
       element.classList.remove('text-dark');
       element.classList.add('text-white');
     });
-    navLinks.forEach(link => {  //**********************************************
-      link.style.color = "#ffffff";
+    navElement.style.filter = "saturate(.8)"
+    dropdownMenu.forEach(menu => { 
+        menu.classList.add('dropdown-menu-dark');
+        menu.style.backgroundColor = "#ef8c2b";
     });
+    document.getElementById('emailButton').style.color = "#161616";  
+/**/navLinks.forEach(link => { 
+      link.style.color = "#161616";
+    });
+    btnPrimary.forEach((element)=>{
+      element.style.filter = "saturate(.7)"
+    })
+    btnDanger.forEach((element)=>{
+      element.style.filter = "saturate(.7)"
+    })
     //Background
     document.querySelector('body').style.backgroundColor = "#0d1117";
     //Color Button
     lightMode.classList.remove('btn-primary');
+    lightMode.classList.add('text-warning');
     darkMode.classList.add('btn-primary');
-
-    rangeFilterButtons.forEach(btn => {
-      btn.style.backgroundColor = "#3276c4";  //Filter
-      btn.style.borderColor = "#3276c4";      //Remove
-    });
-    clearRangeButtons.forEach(btn => {
-      btn.style.backgroundColor = "#C14B3F";
-      btn.style.borderColor = "#C14B3F";
-    });
-    searchButton.style.backgroundColor = "#3276c4";
-    searchButton.style.borderColor = "#3276c4"; 
-    voiceSearchButton.style.backgroundColor = "#3276c4";
-    voiceSearchButton.style.borderColor = "#3276c4";
-    heartIcons.forEach(heart => {
-      heart.classList.add("bg-custom-light");
-      heart.classList.remove("bg-custom-dark");
-    });
+    darkMode.classList.remove('text-warning');
   }
 
   //Light
   else {
     darkElementsBg.forEach((element) => {
       element.classList.remove('bg-dark', 'btn-dark');
-      element.classList.add('bg-light', 'text-dark');
-      navElement.style.backgroundColor = "#ef9333";   
-      navElement.style.color = "#ef9333"; 
-      dropdownMenu.forEach(menu => {  
-        menu.style.backgroundColor = "#ef9333";
-      });
-      document.getElementById('emailButton').style.color = "#282828";   
+      element.classList.add('bg-light', 'text-dark');   
     });
     darkElementsText.forEach((element) => {
       element.classList.remove('text-white', 'text-light');
       element.classList.add('text-dark');
     });
+    navElement.style.filter = "saturate(1)"
+    dropdownMenu.forEach(menu => {  
+        menu.classList.remove('dropdown-menu-dark');
+        menu.style.backgroundColor = "#ef8c2b";
+    });
+    document.getElementById('emailButton').style.color = "#282828";
     navLinks.forEach(link => {  
       link.style.color = "#282828";
     });
@@ -160,23 +145,14 @@ function changeMode() {
     //Color botón
     lightMode.classList.add('btn-primary');
     darkMode.classList.remove('btn-primary');
-
-    rangeFilterButtons.forEach(btn => { //Filter
-      btn.style.backgroundColor = "#0d6efd";
-      btn.style.borderColor = "#0d6efd"; 
-    });
-    clearRangeButtons.forEach(btn => {  //Remove
-      btn.style.backgroundColor = "#dc3545";
-      btn.style.borderColor = "#dc3545"; 
-    });
-    searchButton.style.backgroundColor = "#0d6efd";
-    searchButton.style.borderColor = "#0d6efd"; 
-    voiceSearchButton.style.backgroundColor = "#0d6efd";
-    voiceSearchButton.style.borderColor = "#0d6efd";
-    heartIcons.forEach(heart => {
-      heart.classList.add("bg-custom-dark");
-      heart.classList.remove("bg-custom-light");
-    });
+    darkMode.classList.add('text-warning');
+    lightMode.classList.remove('text-warning');
+    btnPrimary.forEach((element)=>{
+      element.style.filter = "saturate(1)"
+    })
+    btnDanger.forEach((element)=>{
+      element.style.filter = "saturate(1)"
+    })
   }
 }
 

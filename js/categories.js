@@ -103,37 +103,4 @@ document.addEventListener("DOMContentLoaded", function (e) {
     document.getElementById("sortByCount").addEventListener("click", function () {
         sortAndShowCategories(ORDER_BY_PROD_COUNT);
     });
-
-    document.getElementById("clearRangeFilter").addEventListener("click", function () {
-        document.getElementById("rangeFilterCountMin").value = "";
-        document.getElementById("rangeFilterCountMax").value = "";
-
-        minCount = undefined;
-        maxCount = undefined;
-
-        showCategoriesList();
-    });
-
-    document.getElementById("rangeFilterCount").addEventListener("click", function () {
-
-        //Get the minimum and maximum of the intervals to filter by number of products per category.
-        minCount = document.getElementById("rangeFilterCountMin").value;
-        maxCount = document.getElementById("rangeFilterCountMax").value;
-
-        if ((minCount != undefined) && (minCount != "") && (parseInt(minCount)) >= 0) {
-            minCount = parseInt(minCount);
-        }
-        else {
-            minCount = undefined;
-        }
-
-        if ((maxCount != undefined) && (maxCount != "") && (parseInt(maxCount)) >= 0) {
-            maxCount = parseInt(maxCount);
-        }
-        else {
-            maxCount = undefined;
-        }
-
-        showCategoriesList();
-    });
 });
