@@ -9,7 +9,7 @@ let PESO_SYMBOL = "UYU ";
 let PERCENTAGE_SYMBOL = '%';
 let MSG = "FUNCIONALIDAD NO IMPLEMENTADA";
 
-//Update publishing costs
+//Función que se utiliza para actualizar los costos de publicación
 function updateTotalCosts(){
     let unitProductCostHTML = document.getElementById("productCostText");
     let comissionCostHTML = document.getElementById("comissionText");
@@ -24,7 +24,9 @@ function updateTotalCosts(){
     totalCostHTML.innerHTML = totalCostToShow;
 }
 
-//Function that is executed once the event has been launched
+//Función que se ejecuta una vez que se haya lanzado el evento de
+//que el documento se encuentra cargado, es decir, se encuentran todos los
+//elementos HTML presentes.
 document.addEventListener("DOMContentLoaded", function(e){
     document.getElementById("productCountInput").addEventListener("change", function(){
         productCount = this.value;
@@ -65,7 +67,7 @@ document.addEventListener("DOMContentLoaded", function(e){
     });
 
 
-    //File uploader settings
+    //Configuraciones para el elemento que sube archivos
     let dzoptions = {
         url:"/",
         autoQueue: false
@@ -73,10 +75,11 @@ document.addEventListener("DOMContentLoaded", function(e){
     let myDropzone = new Dropzone("div#file-upload", dzoptions);    
 
 
-    //Get the product publication form
+    //Se obtiene el formulario de publicación de producto
     let sellForm = document.getElementById("sell-info");
 
-    //A listener is added to the 'submit' event that will be fired by the form when 'Sell' is selected.
+    //Se agrega una escucha en el evento 'submit' que será
+    //lanzado por el formulario cuando se seleccione 'Vender'.
     sellForm.addEventListener("submit", function(e){
 
         e.preventDefault(); 
@@ -92,7 +95,9 @@ document.addEventListener("DOMContentLoaded", function(e){
         productCategory.classList.remove('is-invalid');
         productCost.classList.remove('is-invalid');
 
-        //Checks that name category have been entered
+        //Se realizan los controles necesarios,
+        //En este caso se controla que se haya ingresado el nombre y categoría.
+        //Consulto por el nombre del producto
         if (productNameInput.value === "")
         {
             productNameInput.classList.add('is-invalid');
@@ -115,14 +120,16 @@ document.addEventListener("DOMContentLoaded", function(e){
         
         if(!infoMissing)
         {
-            //If controls are aproved, a request is send to create the pulishing.
+            //Aquí ingresa si pasó los controles, irá a enviar
+            //la solicitud para crear la publicación.
 
             getJSONData(PUBLISH_PRODUCT_URL).then(function(resultObj){
                 let msgToShowHTML = document.getElementById("resultSpan");
                 let msgToShow = "";
     
-                //If the post was successful, it will return a success message; otherwise it will return an error message.
-                //NOT IMPLEMENTED FUNCTIONALITY
+                //Si la publicación fue exitosa, devolverá mensaje de éxito,
+                //de lo contrario, devolverá mensaje de error.
+                //FUNCIONALIDAD NO IMPLEMENTADA
                 if (resultObj.status === 'ok')
                 {
                     msgToShow = MSG;

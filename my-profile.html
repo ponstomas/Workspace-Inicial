@@ -9,7 +9,6 @@
   <link href="css/font-awesome.min.css" rel="stylesheet">
   <link href="css/bootstrap.min.css" rel="stylesheet">
   <link href="css/styles.css" rel="stylesheet">
-  <link rel="icon" href="icon/IconoInvi.png">
   <style>
     .bd-placeholder-img {
       font-size: 1.125rem;
@@ -26,11 +25,10 @@
       }
     }
   </style>
-
 </head>
 
 <body>
-  <nav class="navbar navbar-expand-lg navbar-light p-1" id="mainNav">
+  <nav class="navbar navbar-expand-lg navbar-light p-1">
     <div class="container">
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
         aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -48,42 +46,37 @@
             <a class="nav-link" href="sell.html">Vender</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="favoritos.html" title="Favoritos"><i class="fa fa-heart"></i></a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="cart.html" title="Carrito"><i class="fa fa-shopping-cart"></i></a>
-          </li>
-          <li class="nav-item">
-            <!--User Menu-->
-            <div class="dropdown">
-              <button class="btn dropdown-toggle" type="button" id="emailButton" data-bs-toggle="dropdown"
-                aria-expanded="false">
-                Usuario</button>
-              <ul class="dropdown-menu dropdown-menu" aria-labelledby="emailButton">
-                <li>
-                  <a class="dropdown-item" href="my-profile.html" id="linkPerfil">Perfil</a>
-                </li>
-                <li>
-                  <a class="dropdown-item" href="login.html" id="logoutSession">Cerrar sesión</a>
-                </li>
-              </ul>
-            </div>
+
+        <!--Menú de usuario-->
+          <div class="dropdown">
+            <button class="btn dropdown-toggle" type="button" id="emailButton" data-bs-toggle="dropdown"aria-expanded="false">
+              Usuario</button>
+            <ul class="dropdown-menu dropdown-menu" aria-labelledby="emailButton">
+              <li>
+                <a class="dropdown-item" href="my-profile.html" id="linkPerfil">Perfil</a>
+              </li>
+              <li>
+                <a class="dropdown-item" href="cart.html" id="carrito">Mi carrito</a>
+              </li>
+              <li>
+                <a class="dropdown-item" href="login.html" id="cerrarSesion">Cerrar sesión</a>
+              </li>
+            </ul>
+          </div>          
           </li>
           <li class="nav-item">
             <div class="btn-mode row float-end">
               <div id="lightMode" class="btn-primary col sun">
-                <i class="fas fa-sun"></i>
-              </div>
+                <i class="fas fa-sun"></i></div>
               <div id="darkMode" class="col moon">
-                <i class="fas fa-moon"></i>
-              </div>
+                <i class="fas fa-moon"></i></div>
             </div>
           </li>
         </ul>
       </div>
     </div>
   </nav>
-
+  
   <main>
     <div class="container">
       <div class="alert alert-danger text-center" role="alert">
@@ -96,8 +89,7 @@
       <p class="float-end">
         <a href="#">Volver arriba</a>
       </p>
-      <p>Este sitio forma parte de <a href="https://jovenesaprogramar.edu.uy/" target="_blank">Jovenes a Programar</a>
-      </p>
+      <p>Este sitio forma parte de <a href="https://jovenesaprogramar.edu.uy/" target="_blank">Jovenes a Programar</a></p>
     </div>
   </footer>
   <script src="js/bootstrap.bundle.min.js"></script>

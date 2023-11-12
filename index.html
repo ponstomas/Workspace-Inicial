@@ -10,36 +10,10 @@
   <link href="css/font-awesome.min.css" rel="stylesheet">
   <link href="css/bootstrap.min.css" rel="stylesheet">
   <link href="css/styles.css" rel="stylesheet">
-
-  <link rel="icon" href="icon/IconoInvi.png">
 </head>
 
-
-<!-- Skeleton Loading -->
-<div id="preloader">
-  <div class="skeleton">
-    <div class="skeleton-nav"></div>
-    <div class="skeleton-item"></div>
-    <div class="container skeleton-card-container">
-      <div class="row">
-        <div class="col-md-4">
-          <div class="skeleton-card"></div>
-        </div>
-        <div class="col-md-4">
-          <div class="skeleton-card"></div>
-        </div>
-        <div class="col-md-4">
-          <div class="skeleton-card"></div>
-        </div>
-      </div>
-    </div>
-    
-  </div>
-  <p>Cargando...</p>
-</div>
-
 <body>
-  <nav class="navbar navbar-expand-lg navbar-light p-1" id="mainNav">
+  <nav class="navbar navbar-expand-lg navbar-light p-1">
     <div class="container">
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
         aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -57,35 +31,30 @@
             <a class="nav-link" href="sell.html">Vender</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="favoritos.html" title="Favoritos"><i class="fa fa-heart"></i></a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="cart.html" title="Carrito"><i class="fa fa-shopping-cart"></i></a>
-          </li>
-          <li class="nav-item">
-            <!--User Menu-->
-            <div class="dropdown">
-              <button class="btn dropdown-toggle" type="button" id="emailButton" data-bs-toggle="dropdown"
-                aria-expanded="false">
-                Usuario</button>
-              <ul class="dropdown-menu" aria-labelledby="emailButton">
-                <li>
-                  <a class="dropdown-item" href="my-profile.html" id="linkPerfil">Perfil</a>
-                </li>
-                <li>
-                  <a class="dropdown-item" href="login.html" id="logoutSession">Cerrar sesión</a>
-                </li>
-              </ul>
-            </div>
+
+        <!--Menú de usuario-->
+          <div class="dropdown">
+            <button class="btn dropdown-toggle" type="button" id="emailButton" data-bs-toggle="dropdown"aria-expanded="false">
+              Usuario</button>
+            <ul class="dropdown-menu dropdown-menu" aria-labelledby="emailButton">
+              <li>
+                <a class="dropdown-item" href="my-profile.html" id="linkPerfil">Perfil</a>
+              </li>
+              <li>
+                <a class="dropdown-item" href="cart.html" id="carrito">Mi carrito</a>
+              </li>
+              <li>
+                <a class="dropdown-item" href="login.html" id="cerrarSesion">Cerrar sesión</a>
+              </li>
+            </ul>
+          </div>            
           </li>
           <li class="nav-item">
             <div class="btn-mode row float-end">
               <div id="lightMode" class="btn-primary col sun">
-                <i class="fas fa-sun"></i>
-              </div>
+                <i class="fas fa-sun"></i></div>
               <div id="darkMode" class="col moon">
-                <i class="fas fa-moon"></i>
-              </div>
+                <i class="fas fa-moon"></i></div>
             </div>
           </li>
         </ul>
@@ -93,7 +62,6 @@
     </div>
   </nav>
   <main>
-    <div class="jumbotron-responsive container"></div>
     <div class="jumbotron text-center"></div>
     <div class="album py-5">
       <div class="container">
@@ -120,10 +88,10 @@
               <img class="bd-placeholder-img card-img-top" src="img/toys_index.jpg"
                 alt="Imgagen representativa de la categoría 'Juguetes'">
               <div class="row">
-                <div class="col-9">
+                <div class="col">
                   <h3 class="m-3">Juguetes</h3>
                 </div>
-                <div class="col-3">
+                <div class="col">
                   <img src="img/cat102_1.png" class="catIcon float-end p-1 m-2">
                 </div>
               </div>
@@ -137,10 +105,10 @@
               <img class="bd-placeholder-img card-img-top" src="img/furniture_index.jpg"
                 alt="Imgagen representativa de la categoría 'Muebles'">
               <div class="row">
-                <div class="col-9">
+                <div class="col">
                   <h3 class="m-3">Muebles</h3>
                 </div>
-                <div class="col-3">
+                <div class="col">
                   <img src="img/cat103_1.png" class="catIcon float-end p-1 m-2">
                 </div>
               </div>
