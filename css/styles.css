@@ -1,5 +1,6 @@
 body{
   background-color: #e2e2e2;
+  transition: all .5s;
 }
 
 .jumbotron,
@@ -34,30 +35,13 @@ nav a {
 
 .jumbotron {
   height: 50vh;
-  padding: 5em inherit;
-  margin-bottom: 0;
+  padding: 0;
+  margin: 0;
   background-color: #53C0FB;
   background: url('../img/cover_back_light.png');
-  background-size: cover;
+  background-size: contain;
   background-position: center;
   background-repeat: no-repeat;
-  color: black;
-  font-weight: bold;
-}
-
-@media (min-width: 768px) {
-  .jumbotron {
-    padding-top: 6rem;
-    padding-bottom: 6rem;
-  }
-}
-
-.jumbotron p:last-child {
-  margin-bottom: 0;
-}
-
-.jumbotron-heading {
-  font-weight: 300;
 }
 
 .jumbotron .container {
@@ -74,6 +58,7 @@ nav a {
 footer {
   padding-top: 1rem;
   padding-bottom: 1rem;
+  border-top: 3px solid #ef9333;
 }
 
 footer p {
@@ -220,39 +205,24 @@ a.custom-card:hover {
 
 /* Inicio Agregado */
 
-/* Modo oscuro */
-.btn-mode{
-  background-color: #db760d;
-  border-radius: 20px;
-}
-
-.sun, .moon{
-  padding: 5px 15px;
-}
-
-.sun{
-  border-bottom-left-radius: 20px;
-  border-top-left-radius: 20px;
-}
-
-.moon{
-  border-bottom-right-radius: 20px;
-  border-top-right-radius: 20px;
-}
-
 /* Cambios */
 
-nav{
+nav, .cartIcon{
   background-color: #ef9333;
 }
 
-.list-group-item{
-  animation: listar .5s forwards;
+.card{
+  animation: listar .3s forwards;
+  transition: all 0.4s;
+}
+
+.card:hover{
+  border: 1px solid #007bff;
 }
 
 @keyframes listar{
   0%{
-    transform: scaleY(0);
+    transform: scaleY(.5);
     opacity: 0;
   }
   50%{
@@ -267,11 +237,6 @@ nav{
   height: 3rem;
   background-color: transparent;
   border: none;
-}
-
-.imgCarousel{
-  padding-right: 25vw;
-  padding-left: 25vw;
 }
 
 /* Estrellas */
@@ -304,4 +269,373 @@ nav{
   cursor: pointer;
 }
 
-/* Fin Agregado */
+.cartProductCount{
+  width: 4em;
+}
+
+.grid-container{
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+}
+
+#lightMode,
+#darkMode {
+  cursor: pointer;
+}
+
+.jumbotron-responsive {
+  background-repeat: no-repeat;  
+  background-position: center;
+  background-size: 100% auto;
+  height: 300px;
+}
+
+/*  ***************CODE FOR PAYMENT METHODS**********************/
+.custom-payment-button {
+    background-color: #3498db; 
+    color: white;
+    font-weight: bold;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease; 
+   
+}
+.custom-payment-button:hover {
+    background-color: #2980b9; 
+}
+
+#boton {
+  padding-top: 3%;
+  padding-bottom: 3%;
+  margin-top: 3%;
+  margin-bottom: 8%;
+  background-color: #007bff; 
+  color: #fff; 
+  border: none;
+  cursor: pointer; 
+  transition: background-color 0.5s, color 0.3s; 
+}
+
+#boton:hover {
+  background-color: #cf861f; 
+  color: #fff; 
+}
+
+.card-container {
+  perspective: 1000px;
+  transform-style: preserve-3d;
+  display: flex;
+  align-items: center; 
+  justify-content: center; 
+  margin-top: 5%;
+  margin-left: 0%;
+  width: 250px; 
+  height: 150px; 
+  border: 1px solid #03142f; 
+  border-radius: 10px; 
+  box-shadow: 0 0 10px rgba(59, 56, 52, 0.8);
+}
+
+
+#cardfront, #cardback {
+  width: 100%;
+  height: 100%;
+  padding: 20px;
+  border-radius: 15px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: white;
+  display: flex;
+  justify-content: center;
+    margin-right: 100%;
+  backface-visibility: hidden; 
+   border-radius: 10px; 
+   position: absolute;
+  background: linear-gradient(45deg, #010201, #29294e) !important;
+  color:   #fff !important;
+
+}
+
+ .card-back {
+  transform: rotateY(180deg); 
+    display: none;
+  transition: opacity 0.3s, transform 0.5s ease-in-out; /* Agregar transición para transform */
+
+}
+
+.cardNumber{
+ font-weight: bolder !important;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+.cvv-preview {
+    font-size: 20px;
+    position: absolute;
+    bottom: 23px;
+    right: 20px;
+      font-weight: bold; 
+}
+
+.barcode {
+    font-size: 12px;
+    position: absolute;
+    bottom: 10px;
+    right: 20px;
+    background-color: #fff;
+}
+
+#paymentModal .modal-content {
+  position: relative;
+  z-index: 1; 
+}
+
+#selectPayment {
+  position: relative;
+  z-index: 2; 
+}
+
+.chip {
+  position: absolute;
+  top: 11px; 
+  left: 18px;
+  width: 30px; 
+  height: 30px; 
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1;
+  padding-top: 30%;
+  max-width: 120%;
+  max-height: 120%;
+}
+.chip img {
+  max-width: 110%; /* Asegura que la imagen no se desborde del contenedor */
+  height: auto; /* Mantiene la proporción original de la imagen */
+  margin-bottom: 350%;
+}
+
+#cvv-preview{
+padding-top: 0%;
+}
+#formattedCardNumberDisplay {
+  font-weight: bold;
+}
+
+#cardHolderNameDisplay {
+  padding-top: 5%;
+ font-weight: lighter;
+}
+
+ .cvv-preview{
+  position: absolute;
+  bottom: 15px;
+  right: 15px;
+  font-size: 14px;
+  padding-left: 30%;
+}
+#warningMessage {
+  margin-top: 900px; 
+  text-align: center; 
+  background-color: rgba(235, 24, 9, 0.514);
+  color: #e2e2e2;
+  margin-right: 30%;
+  width: 30%;
+  height: 8;
+}
+/*  *************** END - CODE FOR PAYMENT METHODS**********************/
+
+/* PROFILE */
+#perfilHeader{
+  display: flex;
+  margin: auto;
+  width: fit-content;
+}
+
+.formProfile{
+  max-width: 700px;
+}
+
+#picture{
+  width: 100px;
+  height: 100px;
+  cursor: pointer;
+}
+
+.profile input[type= file]{
+  display: none;
+}
+
+.profile span{
+  width: 100px;
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  translate: 0 -50px;
+  opacity: 0;
+  background-color: #fda638bf;
+  color: #010201;
+  transition: all .6s;
+  cursor: pointer;
+}
+.profile label:hover span{
+  opacity: 1;
+}
+
+.nav-img img {
+  height: 1.5em;
+}
+
+.top-nav {
+  background-color: #fc9f3b;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  padding: 15px 5%;
+}
+
+.top-nav .input-group{
+  width: auto;
+}
+
+.nav-item{
+  transition: all .4s;
+}
+
+.top-nav #searchButton {
+  background-color: rgb(221, 231, 255);
+  color: #464646;
+}
+
+.nav-item:hover {
+  box-shadow: 0 0 5px #db760d;
+}
+
+.nav-item-mode:hover {
+  box-shadow: none;
+  filter: drop-shadow(0 0 2px #db760d);
+}
+
+.dropdown-menu{
+  background-color: #fda638f0;
+}
+
+#optionsList{
+  max-height: 10em;
+  overflow-y: scroll;
+  scroll-behavior: smooth;
+  background-color: #fff;
+}
+
+#optionsList a{
+  color: #282828;
+}
+
+.optionTitle{
+  background-color: #c5ddeb;
+}
+
+/* Modo oscuro */
+.sun, .moon{
+  padding: 5px 15px;
+  color: #fff;
+  background-color: #f08615;
+  border: none;
+}
+
+.sun{
+  border-bottom-left-radius: 20px;
+  border-top-left-radius: 20px;
+}
+
+.moon{
+  border-bottom-right-radius: 20px;
+  border-top-right-radius: 20px;
+}
+
+.modeNoselect{
+  color: #fdbf69;
+  filter: brightness(.9);
+}
+
+#qForm{
+  width: 5em;
+}
+
+.tableCart td{
+  vertical-align: middle;
+  padding: 15px;
+}
+
+
+@media screen and (max-width: 768px) {
+  .grid-container {
+    grid-template-columns: 1fr 1fr;
+  }
+  .carousel-inner {
+    margin: 0 !important;
+  }
+  .jumbotron {
+    display: none;
+  }
+  .filterProducts {
+    display: block;
+  }
+  .filterProducts input {
+    width: 5em;
+  }
+  .filterProducts .btn-group {
+    margin-top: 1rem;
+    display: flex;
+  }
+  .input-group,
+  .col {
+    margin: 0 !important;
+  }
+    .top-nav {
+    flex-direction: column;
+  }
+  .top-nav .input-group {
+    width: auto;
+    margin: 15px 0 !important;
+  }
+  .btn-mode{
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+}
+
+@media (min-width: 769px) {
+  .jumbotron-responsive {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 576px) {
+  .grid-container {
+    grid-template-columns: 1fr;
+  }
+  .costCart{
+    display: none;
+  }
+}
+
+
+/* Product Info */
+.products-price {
+  font-size: 1.4rem;
+  padding-bottom: 0.8rem;
+  text-align: center;
+}
+
+.product-info-price {
+  font-size: 1.4rem;
+  padding-top: 0.8rem;
+}
+
+.product-name {
+  font-size: 1.3rem;
+}

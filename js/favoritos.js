@@ -1,5 +1,5 @@
-if(!localStorage.getItem("favoritos")){
-  localStorage.setItem("favoritos", null)
+if(!localStorage.getItem("favoritos-"+localStorage.getItem("user"))){
+  localStorage.setItem("favoritos-"+localStorage.getItem("user"), null)
 }
 
 const divFavoritos = document.getElementById('divFavoritos');
@@ -15,7 +15,7 @@ function toggleFavorito(catId, prodId) {
   }
 
   const heartIcon = button.querySelector("i.fa-heart");
-  const storedFavorites = JSON.parse(localStorage.getItem("favoritos")) || [];
+  const storedFavorites = JSON.parse(localStorage.getItem("favoritos-"+localStorage.getItem("user"))) || [];
 
   const index = storedFavorites.findIndex(item => item.catId === storedCatId && item.prodId === storedProdId);
 
@@ -25,7 +25,7 @@ function toggleFavorito(catId, prodId) {
     storedFavorites.splice(index, 1);
   }
 
-  localStorage.setItem("favoritos", JSON.stringify(storedFavorites));
+  localStorage.setItem("favoritos-"+localStorage.getItem("user"), JSON.stringify(storedFavorites));
 }
 
 function removeFromFavoritos(catId, prodId) {
@@ -37,7 +37,7 @@ function removeFromFavoritos(catId, prodId) {
     return;
   }
 
-  const storedFavorites = JSON.parse(localStorage.getItem("favoritos")) || [];
+  const storedFavorites = JSON.parse(localStorage.getItem("favoritos-"+localStorage.getItem("user"))) || [];
 
   const index = storedFavorites.findIndex(item => item.catId === storedCatId && item.prodId === storedProdId);
 
@@ -45,7 +45,7 @@ function removeFromFavoritos(catId, prodId) {
 
     // Remove the product from the favorites list
     storedFavorites.splice(index, 1);
-    localStorage.setItem("favoritos", JSON.stringify(storedFavorites));
+    localStorage.setItem("favoritos-"+localStorage.getItem("user"), JSON.stringify(storedFavorites));
 
     loadFavorites();
   }
@@ -53,7 +53,7 @@ function removeFromFavoritos(catId, prodId) {
 
 // Load favorite products from the api
 async function loadFavorites() {
-  const storedFavorites = JSON.parse(localStorage.getItem("favoritos")) || [];
+  const storedFavorites = JSON.parse(localStorage.getItem("favoritos-"+localStorage.getItem("user"))) || [];
 
   if (storedFavorites.length === 0) {
     showFavorites([]);
@@ -84,6 +84,9 @@ async function loadFavorites() {
     .then(favoriteProducts => {
       favoriteProducts = favoriteProducts.filter(product => product);
       showFavorites(favoriteProducts);
+      // Currency
+      let favoriteCurrency = localStorage.getItem("currency")
+      updateFavoritePrices(favoriteCurrency)
     })
     .catch(error => {
       console.error('Error al cargar productos favoritos:', error);
@@ -96,17 +99,27 @@ function showFavorites(favoriteProducts) { // Show favorites
 
     if (favoriteProducts.length > 0) {
       favoriteProducts.forEach((prod) => {
+         // Currency
+         let originalCost
+
+         if (prod.currency == "USD") {
+           originalCost = prod.cost
+         } else {
+           originalCost = prod.cost / 40
+         }
+ 
+         // Currency _ add data-price _ cost -> original cost _ prod.currency -> USD
         divFavoritos.innerHTML +=
           `<div class="card bg-light m-3">
-          <img onclick="redirectProduct('${prod.id}')" src="${prod.image}" class="card-img-top cursor-active" alt="imagen del producto">
+          <img onclick="redirectProduct('${prod.id}')" src="${prod.image}" aria-label="Imágen ilustrativa de ${prod.name}" class="card-img-top cursor-active" alt="imagen del producto">
           <div class="card-body">
             <h4 class="card-title text-center pb-2">${prod.name}</h4>
-              <button type="button" class="btn btn-success">${prod.cost} ${prod.currency}</button>
+            <div class="price products-price" data-price="${originalCost}">USD ${originalCost.toFixed(2)}</div>
             <div class="card-text">
               <p>${prod.description}</p>
               <small class="text-muted">${prod.soldCount} vendidos</small>
-                <button class="btn btn-danger float-end" id="removeFromFavorites_${prod.catId}-${prod.id}" onclick="removeFromFavoritos('${prod.catId}', '${prod.id}')">
-                    Eliminar
+                <button class="btn btn-secondary float-end" aria-label="Remover del carrito" id="removeFromFavorites_${prod.catId}-${prod.id}" onclick="removeFromFavoritos('${prod.catId}', '${prod.id}')">
+                    <i class="fa fa-times"></i>
                 </button>
             </div>
           </div>
@@ -118,7 +131,8 @@ function showFavorites(favoriteProducts) { // Show favorites
       <div class="text-center text-muted">
       <h4>No tienes productos favoritos.</h4>
       <p>¿Quieres agregar productos favoritos? <a href="categories.html">Explora productos</a></p>
-    </div>`;
+    </div>
+    <hr>`;
     }
   }
   modeList();
@@ -126,3 +140,17 @@ function showFavorites(favoriteProducts) { // Show favorites
 
 
 loadFavorites();
+
+//Currency
+
+function updateFavoritePrices(selectedCurrency) {
+  const prices = document.getElementsByClassName("price");
+
+for (const price of prices) {
+  
+  const originalPrice = parseFloat(price.getAttribute("data-price"));
+  const convertedPrice = originalPrice * currencyExchange[selectedCurrency];   
+
+  price.textContent = `${selectedCurrency} ${convertedPrice.toFixed(2)}`;
+}
+} 

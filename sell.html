@@ -10,10 +10,33 @@
   <link href="css/bootstrap.min.css" rel="stylesheet">
   <link href="css/dropzone.css" rel="stylesheet">
   <link href="css/styles.css" rel="stylesheet">
+  <link rel="icon" href="icon/IconoInvi.png">
 </head>
 
 <body>
-  <nav class="navbar navbar-expand-lg navbar-light p-1">
+  <div class="d-flex m-0 top-nav">
+    <div class="nav-img">
+      <a class="nav-link" href="index.html" ><img src="img/nav-img.png" aria-label="e-mercado, volver a inicio" class="img-fluid me-3"></a>
+    </div>
+    <div class="input-group me-auto">
+      <button type="button" title="Buscar" class="btn border border-0" id="searchButton" aria-label="Buscar">
+        <i class="fas fa-search"></i>
+      </button>
+      <div class="dropdown">
+        <input type="text" list="options" title="Buscador" name="buscador" id="searchNav" placeholder="Buscar..."
+          class="form-control dropdown-toggle border-0" data-bs-toggle="dropdown" aria-label="Buscar categorías o productos">
+        <ul class="dropdown-menu" aria-labelledby="searchNav" id="optionsList"></ul>
+      </div>
+    </div>
+    <div> 
+      <button  id="toggleReaderButton" class="btn"><strong><h5><i class="fas fa-file-audio"></i> Activar Lector de pantalla</h5></strong></button>
+    </div>
+    <div class="btn-group btn-mode ms-3 ps-4" role="group">
+      <button type="button" class="sun" id="lightMode" title="Modo claro" aria-label="Seleccionar modo claro"><i class="fas fa-sun"></i></button>
+      <button type="button" class="moon" id="darkMode" title="Modo oscuro" aria-label="Seleccionar modo oscuro"><i class="fas fa-moon"></i></button>
+    </div>
+  </div>
+  <nav class="navbar navbar-expand-lg navbar-light p-2" id="mainNav">
     <div class="container">
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
         aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -21,51 +44,46 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav w-100 justify-content-between">
-          <li class="nav-item">
-            <a class="nav-link active" href="index.html">Inicio</a>
+          <li class="nav-item ps-2 pe-2">
+            <a class="nav-link" href="index.html"><i class="fa fa-home p-1"></i> Inicio</a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href="categories.html">Categorías</a>
+          <li class="nav-item ps-2 pe-2">
+            <a class="nav-link" href="categories.html"><i class="fa fa-th-large p-1"></i> Categorías</a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href="sell.html">Vender</a>
+          <li class="nav-item ps-2 pe-2">
+            <a class="nav-link" aria-label="Vender" href="sell.html"><span class="fw-bold p-1">$</span> Vender</a>
           </li>
-          <li class="nav-item">
-
-        <!--Menú de usuario-->
-          <div class="dropdown">
-            <button class="btn dropdown-toggle" type="button" id="emailButton" data-bs-toggle="dropdown"aria-expanded="false">
-              Usuario</button>
-            <ul class="dropdown-menu dropdown-menu" aria-labelledby="emailButton">
-              <li>
-                <a class="dropdown-item" href="my-profile.html" id="linkPerfil">Perfil</a>
-              </li>
-              <li>
-                <a class="dropdown-item" href="login.html" id="cerrarSesion">Cerrar sesión</a>
-              </li>
-              <li>
-                <a class="dropdown-item" href="cart.html" id="carrito">Mi carrito</a>
-              </li>
-            </ul>
-          </div>          
+          <li class="nav-item ps-2 pe-2">
+            <a class="nav-link" href="favoritos.html"><i class="fa fa-heart p-1"></i> Favoritos</a>
           </li>
-          <li class="nav-item">
-            <div class="btn-mode row float-end">
-              <div id="lightMode" class="btn-primary col sun">
-                <i class="fas fa-sun"></i></div>
-              <div id="darkMode" class="col moon">
-                <i class="fas fa-moon"></i></div>
+          <li class="nav-item ps-2 pe-2">
+            <a class="nav-link" href="cart.html"><i class="fa fa-shopping-cart p-1"></i> Carrito</a>
+          </li>
+          <li class="nav-item p-0">
+            <!-- User Menu -->
+            <div class="dropdown">
+              <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false"><i
+                  class="fa fa-user p-i"></i>
+                <span id="emailButton"> Usuario</span></button>
+              <ul class="dropdown-menu" aria-labelledby="emailButton">
+                <li>
+                  <a class="dropdown-item" href="my-profile.html" id="linkPerfil">Perfil</a>
+                </li>
+                <li>
+                  <a class="dropdown-item" href="login.html" id="logoutSession">Cerrar sesión</a>
+                </li>
+              </ul>
             </div>
           </li>
         </ul>
       </div>
     </div>
   </nav>
+  <div class="text-center text-dark bg-light p-3 mb-5">
+    <h2>Vender</h2>
+    <p class="lead">Ingresa los datos del artículo a vender.</p>
+  </div>
   <div class="container mb-5 text-light">
-    <div class="text-center p-4">
-      <h2>Vender</h2>
-      <p class="lead">Ingresa los datos del artículo a vender.</p>
-    </div>
     <div class="row justify-content-md-center">
       <div class="col-md-8 order-md-1">
         <h4 class="mb-3">Información del producto</h4>
@@ -98,15 +116,16 @@
           <div class="row">
             <div class="col-md-3 mb-3">
               <label for="productCostInput">Costo</label>
-              <input type="number" name="productCostInput" class="form-control bg-white" id="productCostInput" placeholder="" required="" value="0"
-                min="0">
+              <input type="number" name="productCostInput" class="form-control bg-white" id="productCostInput"
+                placeholder="" required="" value="0" min="0">
               <div class="invalid-feedback">
                 El costo debe ser mayor que 0.
               </div>
             </div>
             <div class="col-md-4 mb-3">
               <label for="productCurrency">Moneda</label>
-              <select name="productCurrency" class="form-select custom-select d-block w-100 bg-white" id="productCurrency" required>
+              <select name="productCurrency" class="form-select custom-select d-block w-100 bg-white"
+                id="productCurrency" required>
                 <option value="" hidden selected>Seleccionar moneda</option>
                 <option>Pesos Uruguayos (UYU)</option>
                 <option>Dólares (USD)</option>
@@ -119,7 +138,8 @@
           <div class="row">
             <div class="col-md-7 mb-3">
               <label for="productCategory">Categoría</label>
-              <select name="productCategory" class="custom-select form-select d-block w-100 bg-white" id="productCategory">
+              <select name="productCategory" class="custom-select form-select d-block w-100 bg-white"
+                id="productCategory">
                 <option value="">Elija la categoría...</option>
                 <option>Autos</option>
                 <option>Juguetes</option>
@@ -136,8 +156,8 @@
           <div class="row">
             <div class="col-md-3 mb-3">
               <label for="productCountInput">Cantidad en stock</label>
-              <input type="number" name="productCountInput" class="form-control bg-white" id="productCountInput"  required value="1"
-                min="0">
+              <input type="number" name="productCountInput" class="form-control bg-white" id="productCountInput"
+                required value="1" min="0">
               <div class="invalid-feedback">
                 La cantidad es requerida.
               </div>
@@ -198,11 +218,12 @@
       <p class="float-end">
         <a href="#">Volver arriba</a>
       </p>
-      <p>Este sitio forma parte de <a href="https://jovenesaprogramar.edu.uy/" target="_blank">Jovenes a Programar</a></p>
+      <p>Este sitio forma parte de <a href="https://jovenesaprogramar.edu.uy/" target="_blank" aria-label="Ir a la página de Jóvenes a programar">Jóvenes a Programar</a>
+      </p>
     </div>
   </footer>
 
-  <div class="alert alert-primary-dismissible fade" id="alertResult" role="alert">
+  <div class="alert alert-primary-dismissible fade mt-5" id="alertResult" role="alert">
     <span id="resultSpan"></span>
   </div>
 
