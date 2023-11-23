@@ -21,8 +21,14 @@ async function fetchCart() {
       localStorage.getItem("cartList-" + localStorage.getItem("user"))
     ) || [];
   try {
+    let options = {
+      headers: {
+        "access-token": localStorage.getItem("token")
+      }
+
+    }
     for (const element of cartList) {
-      const response = await fetch(`${PRODUCT_INFO_URL}${element}${EXT_TYPE}`);
+      const response = await fetch(`${PRODUCT_INFO_URL}${element}${EXT_TYPE}`, options);
       if (!response.ok) {
         throw new Error("Error de respuesta de la red");
       }

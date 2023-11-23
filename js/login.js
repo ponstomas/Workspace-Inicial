@@ -28,8 +28,16 @@ function submitForm(event) {
 
   if (user.value !== "" && contrasena.value !== "") {
     if (emailValido(user.value) && contrasenaValida(contrasena.value)) {
-      localStorage.setItem("user", user.value);
-      window.location.href = "index.html";
+      async function holdOn() {
+        try {
+          const resultadoLogin = await login(); // Espera a que se complete el inicio de sesión
+          localStorage.setItem("user", user.value); // Guarda el usuario en el almacenamiento local
+          window.location.href = "index.html"; // Redirige a la página index.html
+        } catch (error) {
+          console.error("Ocurrió un error durante el inicio de sesión:", error);
+        }
+      }
+      holdOn()
     }
 
     //Error Message
@@ -58,8 +66,10 @@ function submitForm(event) {
     errorMessage += "<li class='small'>Debe incluir al menos un número</li>";
   }
 
-  loginError.innerHTML = "<ul>" + errorMessage + "</ul>";
+  loginError.innerHTML = "<ul>" + errorMessage + "</ul>";  
 }
+
+
 
 //Show Password
 function mostrarPassword() {
@@ -114,3 +124,35 @@ else {
   //Image
   loginImg.src = "img/login_light.png";
 }
+
+
+//Auth
+async function fetchData(url, options) {
+  try {
+    const response = await fetch(url, options);
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+function login() {
+const loginOptions = {
+  method: "POST",
+  headers: {
+    "Content-Type": "application/json",
+  },
+  body: JSON.stringify({
+    "username": user.value,
+    "password": contrasena.value
+  }),
+};
+fetchData("http://localhost:3000/login", loginOptions)
+.then((data) => {
+  localStorage.setItem('token', data.token);
+  console.log(data);
+})
+}
+
+
